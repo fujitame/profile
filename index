@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akihiro Fujikawa | Soccer Recruitment Profile & Portfolio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-yellow-500 selection:text-slate-950">
+
+  <!-- TOP HEADER / HERO -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-yellow-500 text-slate-950 flex items-center justify-center font-black text-xl">
+          AF
+        </div>
+        <div>
+          <h1 id="disp-name" class="text-xl font-bold tracking-tight text-white">AKIHIRO FUJIKAWA</h1>
+          <p id="disp-subhead" class="text-xs text-yellow-400 font-medium">Harcum College (NJCAA D1) | Class of 2027</p>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="openEditModal()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-2 rounded-lg font-semibold transition flex items-center gap-2">
+          <i class="fa-solid fa-link text-yellow-400"></i> Edit & Share Link
+        </button>
+        <a id="disp-email-btn" href="mailto:fujiakihiro8@gmail.com" class="text-xs bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold px-4 py-2 rounded-lg transition flex items-center gap-2">
+          <i class="fa-solid fa-envelope"></i> Contact Scout
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-8">
+
+    <!-- QUICK SPECS GRID -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Position</span>
+        <span id="disp-position" class="text-lg font-black text-white mt-1">LW / LM / RB</span>
+        <span class="text-[10px] text-slate-500 mt-1">Right-Footed</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Academic GPA</span>
+        <span id="disp-gpa" class="text-lg font-black text-yellow-400 mt-1">3.28 / 4.00</span>
+        <span class="text-[10px] text-slate-500 mt-1">NCAA Eligibility Ready</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Height / Weight</span>
+        <span id="disp-physique" class="text-lg font-black text-white mt-1">170cm / 68kg</span>
+        <span class="text-[10px] text-slate-500 mt-1">5'7" / 150 lbs</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">NCAA ID</span>
+        <span id="disp-ncaaid" class="text-lg font-black text-emerald-400 mt-1">250663641</span>
+        <span class="text-[10px] text-slate-500 mt-1">Final Certified</span>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHT VIDEOS SECTION -->
+    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-play text-red-500"></i> Official Highlighting & Game Film
+        </h2>
+        <span class="text-xs text-slate-400">NJCAA D1 & UPSL Highlights</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Video 1: Harcum Highlight -->
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold text-slate-200">2025-26 Harcum College Highlights (NJCAA D1)</h3>
+          <div class="relative aspect-video rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+            <iframe id="iframe-harcum" class="w-full h-full" src="https://www.youtube.com/embed/GYwZrTe9pqw" title="Harcum Highlights" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Video 2: Irvine FC UPSL -->
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold text-slate-200">Summer 2026 Irvine FC Showcase (UPSL)</h3>
+          <div class="relative aspect-video rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+            <iframe id="iframe-upsl" class="w-full h-full" src="https://www.youtube.com/embed/mDg81hUIL8k" title="Irvine FC Highlights" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATHLETIC & ACADEMIC BREAKDOWN -->
+    <section class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Key Tactical Strengths -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-yellow-400"></i> Key Athletic Strengths
+        </h3>
+        <ul class="space-y-3 text-sm text-slate-300">
+          <li class="border-b border-slate-800/80 pb-2">
+            <strong class="text-white block font-semibold">1v1 Isolation Specialist:</strong>
+            Explosive change of direction on flanks, consistently cutting inside or creating cutback assists.
+          </li>
+          <li class="border-b border-slate-800/80 pb-2">
+            <strong class="text-white block font-semibold">Set-Piece Precision:</strong>
+            Designated right-footed kicker for corner kicks and direct free-kick situations.
+          </li>
+          <li>
+            <strong class="text-white block font-semibold">Possession Suitability:</strong>
+            Highly suited for possession-oriented tactical programs with high composure under pressure.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Season Performance -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-chart-line text-emerald-400"></i> Season Stats & Track Record
+        </h3>
+        <div class="space-y-3 text-sm">
+          <div class="bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+            <span class="text-xs text-yellow-400 font-bold block">2025-2026 Harcum College (NJCAA D1)</span>
+            <p id="disp-stats-harcum" class="text-slate-200 mt-1 font-mono">7 Matches Played | 1 Goal | 1 Assist</p>
+          </div>
+          <div class="bg-slate-950/60 p-3 rounded-lg border border-slate-800">
+            <span class="text-xs text-sky-400 font-bold block">Summer 2026 Irvine FC (UPSL Premier)</span>
+            <p id="disp-stats-upsl" class="text-slate-200 mt-1">SoCal South Division | Primary Winger</p>
+          </div>
+          <p class="text-xs text-slate-400 italic">"Evaluated by D1 Coaches as a high-level technical winger built for high-tempo build-up systems."</p>
+        </div>
+      </div>
+
+      <!-- Academic & Transfer Status -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-400"></i> Academic & Eligibility
+        </h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li class="flex justify-between border-b border-slate-800/80 pb-1">
+            <span class="text-slate-400">Cumulative GPA:</span>
+            <span class="font-bold text-white">3.28 / 4.00</span>
+          </li>
+          <li class="flex justify-between border-b border-slate-800/80 pb-1">
+            <span class="text-slate-400">Summer OCC Credits:</span>
+            <span class="font-bold text-emerald-400">CMST 100 & STAT C1000</span>
+          </li>
+          <li class="flex justify-between border-b border-slate-800/80 pb-1">
+            <span class="text-slate-400">Transfer Eligibility:</span>
+            <span class="font-bold text-yellow-400">Fall 2027 (2 Yrs Left)</span>
+          </li>
+          <li class="flex justify-between">
+            <span class="text-slate-400">NCAA Portal ID:</span>
+            <span class="font-mono text-white">250663641</span>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- FOOTER / CONTACT CTA -->
+    <footer class="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center space-y-4">
+      <h3 class="text-xl font-bold text-white">Direct Contact for University Coaches & Scouts</h3>
+      <p class="text-sm text-slate-400 max-w-xl mx-auto">Available for official/unofficial visits, game film evaluations, and transfer discussions for Fall 2027 entry.</p>
+      <div class="flex flex-wrap justify-center gap-4 pt-2">
+        <a id="disp-email-link" href="mailto:fujiakihiro8@gmail.com" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition flex items-center gap-2 text-sm">
+          <i class="fa-solid fa-envelope"></i> fujiakihiro8@gmail.com
+        </a>
+        <a id="disp-ig-link" href="https://instagram.com/a93914" target="_blank" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-6 py-3 rounded-xl transition flex items-center gap-2 text-sm">
+          <i class="fa-brands fa-instagram text-pink-500"></i> @a93914
+        </a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- EDIT & SHARE MODAL -->
+  <div id="edit-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 space-y-6 text-left">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <h3 class="text-lg font-bold text-white"><i class="fa-solid fa-pen-to-square text-yellow-400 mr-2"></i>Edit Profile & Generate Share Link</h3>
+        <button onclick="closeEditModal()" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="edit-form" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">Player Name</label>
+          <input type="text" id="input-name" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-white">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 font-semibold mb-1">Position</label>
+            <input type="text" id="input-position" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-white">
+          </div>
+          <div>
+            <label class="block text-slate-400 font-semibold mb-1">GPA</label>
+            <input type="text" id="input-gpa" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-white">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 font-semibold mb-1">Harcum Stats</label>
+            <input type="text" id="input-stats-harcum" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-white">
+          </div>
+          <div>
+            <label class="block text-slate-400 font-semibold mb-1">Email</label>
+            <input type="email" id="input-email" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-white">
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">YouTube Video ID (Harcum Highlight)</label>
+          <input type="text" id="input-yt-harcum" placeholder="GYwZrTe9pqw" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">YouTube Video ID (UPSL Highlight)</label>
+          <input type="text" id="input-yt-upsl" placeholder="mDg81hUIL8k" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-white">
+        </div>
+      </form>
+
+      <div class="pt-2 border-t border-slate-800 space-y-3">
+        <button onclick="generateAndCopyUrl()" class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-copy"></i> Generate & Copy Scout Link
+        </button>
+        <p class="text-[11px] text-slate-500 text-center">This creates a URL with your updated stats embedded. Anyone opening the generated link will see your changes instantly without a server!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC (URL PARAMETER DECODING & ENCODING) -->
+  <script>
+    // デフォルトの基本データ
+    const defaultData = {
+      name: "AKIHIRO FUJIKAWA",
+      position: "LW / LM / RB",
+      gpa: "3.28 / 4.00",
+      heightWeight: "170cm / 68kg",
+      ncaaId: "250663641",
+      harcumStats: "7 Matches | 1 Goal | 1 Assist",
+      upslStats: "SoCal South Division | Primary Winger",
+      email: "fujiakihiro8@gmail.com",
+      ytHarcum: "GYwZrTe9pqw",
+      ytUpsl: "mDg81hUIL8k"
+    };
+
+    let currentProfile = { ...defaultData };
+
+    // 1. URLパラメータからデータをロードして表示
+    function loadProfileFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const encodedData = urlParams.get('data');
+
+      if (encodedData) {
+        try {
+          const jsonString = decodeURIComponent(escape(atob(encodedData)));
+          const parsedData = JSON.parse(jsonString);
+          currentProfile = { ...defaultData, ...parsedData };
+        } catch (e) {
+          console.error("Failed to parse profile data from URL parameter", e);
+        }
+      }
+
+      renderProfile(currentProfile);
+    }
+
+    // 2. 画面要素へのデータ反映
+    function renderProfile(data) {
+      document.getElementById('disp-name').innerText = data.name;
+      document.getElementById('disp-position').innerText = data.position;
+      document.getElementById('disp-gpa').innerText = data.gpa;
+      document.getElementById('disp-physique').innerText = data.heightWeight;
+      document.getElementById('disp-ncaaid').innerText = data.ncaaId;
+      document.getElementById('disp-stats-harcum').innerText = data.harcumStats;
+      document.getElementById('disp-stats-upsl').innerText = data.upslStats;
+      
+      document.getElementById('disp-email-btn').href = `mailto:${data.email}`;
+      document.getElementById('disp-email-link').href = `mailto:${data.email}`;
+      document.getElementById('disp-email-link').innerHTML = `<i class="fa-solid fa-envelope"></i> ${data.email}`;
+
+      if (data.ytHarcum) {
+        document.getElementById('iframe-harcum').src = `https://www.youtube.com/embed/${data.ytHarcum}`;
+      }
+      if (data.ytUpsl) {
+        document.getElementById('iframe-upsl').src = `https://www.youtube.com/embed/${data.ytUpsl}`;
+      }
+    }
+
+    // 3. モーダル表示とフォーム入力同期
+    function openEditModal() {
+      document.getElementById('input-name').value = currentProfile.name;
+      document.getElementById('input-position').value = currentProfile.position;
+      document.getElementById('input-gpa').value = currentProfile.gpa;
+      document.getElementById('input-stats-harcum').value = currentProfile.harcumStats;
+      document.getElementById('input-email').value = currentProfile.email;
+      document.getElementById('input-yt-harcum').value = currentProfile.ytHarcum;
+      document.getElementById('input-yt-upsl').value = currentProfile.ytUpsl;
+
+      document.getElementById('edit-modal').classList.remove('hidden');
+    }
+
+    function closeEditModal() {
+      document.getElementById('edit-modal').classList.add('hidden');
+    }
+
+    // 4. 新しいデータの共有用URL生成 & クリップボードにコピー
+    function generateAndCopyUrl() {
+      const updatedData = {
+        ...currentProfile,
+        name: document.getElementById('input-name').value,
+        position: document.getElementById('input-position').value,
+        gpa: document.getElementById('input-gpa').value,
+        harcumStats: document.getElementById('input-stats-harcum').value,
+        email: document.getElementById('input-email').value,
+        ytHarcum: document.getElementById('input-yt-harcum').value,
+        ytUpsl: document.getElementById('input-yt-upsl').value
+      };
+
+      // Base64エンコード
+      const jsonString = JSON.stringify(updatedData);
+      const encodedData = btoa(unescape(encodeURIComponent(jsonString)));
+
+      // URL生成
+      const shareableUrl = `${window.location.origin}${window.location.pathname}?data=${encodeURIComponent(encodedData)}`;
+
+      // クリップボードにコピー
+      navigator.clipboard.writeText(shareableUrl).then(() => {
+        alert("Scout share link copied to clipboard!\n\nThis URL directly contains your updated stats.");
+        renderProfile(updatedData);
+        currentProfile = updatedData;
+        closeEditModal();
+      }).catch(err => {
+        alert("Failed to copy URL automatically. Check console.");
+        console.log("Shareable URL:", shareableUrl);
+      });
+    }
+
+    // 初期化実行
+    window.addEventListener('DOMContentLoaded', loadProfileFromUrl);
+  </script>
+</body>
+</html>

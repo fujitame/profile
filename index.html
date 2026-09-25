@@ -11,28 +11,44 @@
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen">
 
-    <!-- ヘッダー / アスリート基本情報 -->
-    <header class="max-w-4xl mx-auto pt-10 pb-6 px-4 border-b border-slate-800">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-                <div class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-xs font-bold mb-2">
-                    NCAA Transfer Candidate (Fall 2027)
-                </div>
-                <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight">AKIHIRO FUJIKAWA</h1>
-                <p class="text-slate-400 text-sm md:text-base mt-1">
-                    Winger / Fullback | Harcum College (NJCAA D1 - PA) | NCAA ID: <span id="disp-ncaa-id">250663641</span>
-                </p>
-            </div>
+    <!-- ヘッダー / アスリートヒーローセクション（写真統合） -->
+    <header class="max-w-4xl mx-auto pt-8 pb-6 px-4 border-b border-slate-800">
+        <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 bg-slate-800/50 p-5 md:p-6 rounded-2xl border border-slate-700/60 shadow-xl">
             
-            <div class="flex flex-wrap items-center gap-3">
-                <!-- Instagram Link Button -->
-                <a href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-90 text-white font-bold rounded-lg text-sm flex items-center gap-2 transition shadow-lg">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    @a93914
-                </a>
-                <a href="#contact-form" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg text-sm transition shadow-lg">
-                    Contact Player
-                </a>
+            <!-- プレイヤーメイン写真（効果的トリミング枠） -->
+            <div class="w-40 h-52 md:w-48 md:h-64 flex-shrink-0 rounded-xl overflow-hidden border-2 border-amber-500/40 shadow-lg relative group">
+                <img src="Akihiro_Harcum.png" alt="Akihiro Fujikawa" class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105">
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-2 text-center">
+                    <span class="text-[10px] font-black text-amber-400 uppercase tracking-widest block">NJCAA D1 #14</span>
+                </div>
+            </div>
+
+            <!-- プロフィール基本情報 -->
+            <div class="flex flex-col justify-between flex-grow text-center md:text-left">
+                <div>
+                    <div class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-xs font-bold mb-2">
+                        NCAA Transfer Candidate (Fall 2027)
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight">AKIHIRO FUJIKAWA</h1>
+                    <p class="text-slate-300 text-sm md:text-base font-semibold mt-1">
+                        Winger / Fullback | Harcum College (PA)
+                    </p>
+                    <p class="text-slate-400 text-xs mt-1">
+                        NCAA ID: <span id="disp-ncaa-id" class="text-slate-200 font-mono">250663641</span>
+                    </p>
+                </div>
+
+                <!-- アクションボタン群 -->
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 md:mt-0">
+                    <!-- Instagram Link Button -->
+                    <a href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-90 text-white font-bold rounded-lg text-sm flex items-center gap-2 transition shadow-md">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        @a93914
+                    </a>
+                    <a href="#contact-form" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg text-sm transition shadow-md">
+                        Contact Player
+                    </a>
+                </div>
             </div>
         </div>
     </header>

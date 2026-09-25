@@ -3,72 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akihiro Fujikawa | Transfer Recruiting Profile</title>
+    <title>Akihiro Fujikawa | Transfer Candidate Profile</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <style>
-        .gold-border { border-color: #d69e2e; }
-        .gold-bg { background-color: #d69e2e; }
-    </style>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen">
 
-    <!-- コーチ専用パーソナライズ・ウェルカムバナー -->
-    <div id="coach-welcome-banner" class="hidden bg-blue-900 border-b border-blue-500 py-3 px-4 text-center">
-        <p class="text-sm md:text-base font-semibold text-blue-200">
-            🎓 Welcome, <span id="coach-display-name" class="text-amber-400 underline">Coaching Staff</span>! Thank you for reviewing my profile.
-        </p>
-    </div>
-
     <!-- ヘッダー / アスリート基本情報 -->
-    <header class="max-w-5xl mx-auto pt-8 pb-6 px-4">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-slate-700 pb-6">
+    <header class="max-w-4xl mx-auto pt-10 pb-6 px-4 border-b border-slate-800">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-                <div class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/40 rounded-full text-xs font-bold mb-2">
+                <div class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-xs font-bold mb-2">
                     NCAA Transfer Candidate (Fall 2027)
                 </div>
-                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">AKIHIRO FUJIKAWA</h1>
+                <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight">AKIHIRO FUJIKAWA</h1>
                 <p class="text-slate-400 text-sm md:text-base mt-1">
-                    Winger / Fullback | Harcum College (NJCAA D1 - PA) | NCAA ID: 250663641
+                    Winger / Fullback | Harcum College (NJCAA D1 - PA) | NCAA ID: <span id="disp-ncaa-id">250663641</span>
                 </p>
             </div>
-            
-            <!-- コーチ用クイックアクションボタン -->
-            <div class="flex flex-wrap gap-3">
-                <button id="btn-fav" onclick="toggleCoachFavorite()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-sm font-bold flex items-center gap-2 transition">
-                    <span id="star-icon" class="text-slate-400">★</span> <span id="fav-text">Bookmark Candidate</span>
-                </button>
-                <a href="#contact-portal" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg text-sm transition">
-                    Direct Outreach
-                </a>
-            </div>
+            <a href="#contact-form" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg text-sm transition shadow-lg">
+                Contact Player / Agency
+            </a>
         </div>
     </header>
 
     <!-- メインコンテンツ -->
-    <main class="max-w-5xl mx-auto px-4 py-6 space-y-10">
+    <main class="max-w-4xl mx-auto px-4 py-8 space-y-10">
 
-        <!-- スペック & 学業スタッツ -->
+        <!-- アカデミック & アスレチック スタッツ -->
         <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
-                <span class="text-xs text-slate-400 block font-medium">Academic Status</span>
+            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
+                <span class="text-xs text-slate-400 font-medium block">Academic Status</span>
                 <span id="disp-gpa" class="text-2xl font-bold text-amber-400">GPA 3.28</span>
-                <span class="text-[10px] text-slate-500 block mt-1">Harcum & OCC Credit Cleared</span>
+                <span class="text-[10px] text-slate-500 block mt-1">Harcum & OCC Credits</span>
             </div>
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
-                <span class="text-xs text-slate-400 block font-medium">Height / Weight</span>
-                <span class="text-xl font-bold text-slate-100">170cm / 68kg</span>
-                <span class="text-[10px] text-slate-500 block mt-1">5'7" / 150 lbs | Dominant: Right</span>
+            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
+                <span class="text-xs text-slate-400 font-medium block">Physicals</span>
+                <span id="disp-physicals" class="text-xl font-bold text-slate-100">170cm / 68kg</span>
+                <span class="text-[10px] text-slate-500 block mt-1">5'7" / 150 lbs | Right-footed</span>
             </div>
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
-                <span class="text-xs text-slate-400 block font-medium">Primary Positions</span>
-                <span class="text-xl font-bold text-slate-100">LW / LM / RB</span>
-                <span class="text-[10px] text-slate-500 block mt-1">Dynamic 1v1 & Build-up</span>
+            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
+                <span class="text-xs text-slate-400 font-medium block">Positions</span>
+                <span id="disp-positions" class="text-xl font-bold text-slate-100">LW / LM / RB</span>
+                <span class="text-[10px] text-slate-500 block mt-1">Flank Attack & Build-up</span>
             </div>
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
-                <span class="text-xs text-slate-400 block font-medium">NJCAA D1 Record</span>
+            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
+                <span class="text-xs text-slate-400 font-medium block">NJCAA D1 Record</span>
                 <span id="disp-stats" class="text-xl font-bold text-slate-100">7 GP | 1G 1A</span>
                 <span class="text-[10px] text-slate-500 block mt-1">Freshman Official Season</span>
             </div>
@@ -77,189 +59,163 @@
         <!-- ハイライト動画セクション -->
         <section class="space-y-4">
             <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span class="w-2 h-2 bg-blue-500 rounded-full"></span> Highlight Videos
+                <span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span> Match Highlights
             </h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- NJCAA D1 Season Highlights -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
+                <!-- メインハイライト (NJCAA D1) -->
+                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/60 shadow-lg">
                     <div class="aspect-video w-full">
-                        <iframe id="iframe-primary" class="w-full h-full" src="https://www.youtube.com/embed/GYwZrTe9pqw" title="NJCAA Highlights" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="iframe-primary" class="w-full h-full" src="" title="NJCAA Highlights" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="p-3">
-                        <h3 class="font-bold text-sm text-slate-200">2025-26 NJCAA D1 Season Highlights</h3>
-                        <p class="text-xs text-slate-400 mt-1">Harcum College (PA) | Flank attack, 1v1 breakthroughs & chance creation.</p>
+                    <div class="p-4">
+                        <h3 id="title-primary" class="font-bold text-sm text-slate-200">2025-26 NJCAA D1 Season Highlights</h3>
+                        <p id="desc-primary" class="text-xs text-slate-400 mt-1">Harcum College (PA) | Flank attack & 1v1 breakthroughs.</p>
                     </div>
                 </div>
 
-                <!-- UPSL Irvine FC Highlights -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
+                <!-- サブハイライト (UPSL Irvine FC) -->
+                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/60 shadow-lg">
                     <div class="aspect-video w-full">
-                        <iframe id="iframe-secondary" class="w-full h-full" src="https://www.youtube.com/embed/mDg81hUIL8k" title="UPSL Clips" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="iframe-secondary" class="w-full h-full" src="" title="UPSL Clips" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="p-3">
-                        <h3 class="font-bold text-sm text-slate-200">Summer 2026 UPSL Matches (Irvine FC)</h3>
-                        <p class="text-xs text-slate-400 mt-1">Southern California Premier League | FK assist & high-pressure technical play.</p>
+                    <div class="p-4">
+                        <h3 id="title-secondary" class="font-bold text-sm text-slate-200">Summer 2026 UPSL Matches (Irvine FC)</h3>
+                        <p id="desc-secondary" class="text-xs text-slate-400 mt-1">SoCal Premier League | Cutback assists & set-piece precision.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- スカウティング評価 & フィット感 -->
-        <section class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 space-y-3">
-            <h2 class="text-lg font-bold text-amber-400">Tactical Profile & D1 ID Camp Assessment</h2>
+        <!-- スカウティング評価 -->
+        <section class="bg-slate-800/40 p-6 rounded-xl border border-slate-700/60 space-y-3">
+            <h2 class="text-sm font-bold text-amber-400 uppercase tracking-wider">D1 Combine Assessment</h2>
             <blockquote class="text-sm italic text-slate-300 border-l-2 border-amber-500 pl-4 py-1">
-                "Possesses high technical ability with the ball at feet. Highly suited for possession-oriented programs with structured build-up." 
-                <span class="block text-xs font-normal text-slate-400 mt-1">— ID Camp Assessment (Chris Volk, UC Riverside D1 Evaluator)</span>
+                "Possesses good technical ability with the ball at feet. A possession-oriented playing program suits your skill best." 
+                <span class="block text-xs font-normal text-slate-400 mt-2">— Evaluation by Chris Volk (UC Riverside D1) at El Camino Combine</span>
             </blockquote>
         </section>
 
-        <!-- 双方向コミュニケーション / プライベート進捗ポータル -->
-        <section id="contact-portal" class="bg-slate-800 p-6 rounded-xl border border-slate-700 space-y-4">
+        <!-- 監督・スカウト専用 問い合わせフォーム -->
+        <section id="contact-form" class="bg-slate-800 p-6 md:p-8 rounded-xl border border-slate-700 shadow-xl space-y-6">
             <div>
-                <h2 class="text-xl font-bold text-white">Coach Contact & Private Inquiry Portal</h2>
+                <h2 class="text-2xl font-bold text-white">Coach Contact & Inquiry Portal</h2>
                 <p class="text-xs text-slate-400 mt-1">
-                    Coaches can directly request full-match footage, schedule in-person scouting, or leave feedback. Responses sync directly with Akihiro's recruiting board.
+                    College coaches can directly send messages, request full-match footage, or schedule recruitment talks with Akihiro and his agency.
                 </p>
             </div>
 
-            <form id="interaction-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <form id="contactForm" onsubmit="submitMessage(event)" class="space-y-4">
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Your Email Address</label>
-                        <input type="email" id="coach-email" required placeholder="coach@university.edu" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Coach Name / University</label>
+                        <input type="text" id="coach-name" required placeholder="Coach Smith / University Name" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-1">Request Type</label>
-                        <select id="request-type" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
-                            <option value="Full Match Film">Request Full Match Video</option>
-                            <option value="Official Visit / Call">Schedule Call / Campus Visit</option>
-                            <option value="Scholarship Inquiry">Scholarship / Roster Status Inquiry</option>
-                            <option value="General Feedback">General Feedback</option>
-                        </select>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Your Email Address</label>
+                        <input type="email" id="coach-email" required placeholder="coach@university.edu" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-300 mb-1">Message / Notes</label>
-                    <textarea id="coach-message" rows="3" placeholder="Leave a private note or request..." class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Inquiry Type</label>
+                    <select id="inquiry-type" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
+                        <option value="Full Match Film Request">Request Full Match Video</option>
+                        <option value="Call / Campus Visit">Schedule Call / Campus Visit</option>
+                        <option value="Scholarship & Roster Status">Scholarship & Roster Inquiry</option>
+                        <option value="General Message">General Message</option>
+                    </select>
                 </div>
-                <button type="submit" class="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-lg text-sm transition">
-                    Send Private Message to Akihiro & Agency
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Message</label>
+                    <textarea id="coach-message" rows="4" required placeholder="Enter your message here..." class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-sm transition shadow-md">
+                    Send Direct Message
                 </button>
             </form>
-            <div id="form-status" class="hidden text-xs text-center font-bold py-2 rounded-lg"></div>
+            <div id="form-response" class="hidden text-xs text-center font-bold py-3 rounded-lg"></div>
         </section>
 
     </main>
 
-    <footer class="max-w-5xl mx-auto py-8 text-center text-xs text-slate-500 border-t border-slate-800">
-        <p>© 2026 Akihiro Fujikawa Recruitment. Managed via Agency WithYou.</p>
+    <footer class="max-w-4xl mx-auto py-8 text-center text-xs text-slate-500 border-t border-slate-800">
+        <p>© 2026 Akihiro Fujikawa Recruitment Profile. Direct Contact: fujiakihiro8@gmail.com</p>
     </footer>
 
-    <!-- JS スクリプト -->
+    <!-- データ管理・JS処理 -->
     <script>
+        // =========================================================
+        // ★ 管理者用設定エリア（ここを変更するだけで画面が更新されます）★
+        // =========================================================
+        const PROFILE_DATA = {
+            gpa: "GPA 3.28",
+            physicals: "170cm / 68kg",
+            positions: "LW / LM / RB",
+            stats: "7 GP | 1G 1A",
+            ncaaId: "250663641",
+            
+            // YouTube動画の「ID（11桁の文字列）」を入力
+            youtubeVideo1: "GYwZrTe9pqw", 
+            titleVideo1: "2025-26 NJCAA D1 Season Highlights",
+            descVideo1: "Harcum College (PA) | Flank attack, 1v1 breakthroughs & chance creation.",
+
+            youtubeVideo2: "mDg81hUIL8k", 
+            titleVideo2: "Summer 2026 UPSL Matches (Irvine FC)",
+            descVideo2: "SoCal Premier League | Cutback assists & FK precision."
+        };
+
+        // Supabase設定
         const SUPABASE_URL = 'https://cjrabdfdtrufbpjmqddh.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_u0hVckGZrWePM3j1BHDBsQ_YImzJ4D2';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // URLパラメータの取得
-        const urlParams = new URLSearchParams(window.location.search);
-        const coachParam = urlParams.get('coach');
-        const adminMode = urlParams.get('admin');
-
-        // URLパラメータによる動的表示更新（管理者モード）
-        const customVideo = urlParams.get('v');
-        const customGpa = urlParams.get('gpa');
-        const customStats = urlParams.get('stats');
-
+        // 画面描画処理
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. コーチ特定表示
-            if (coachParam) {
-                const welcomeBanner = document.getElementById('coach-welcome-banner');
-                const displayName = document.getElementById('coach-display-name');
-                displayName.innerText = coachParam.replace('_', ' ');
-                welcomeBanner.classList.remove('hidden');
-                
-                // アクセスログの記録
-                logInteraction('view', `Accessed by ${coachParam}`);
-            }
+            document.getElementById('disp-gpa').innerText = PROFILE_DATA.gpa;
+            document.getElementById('disp-physicals').innerText = PROFILE_DATA.physicals;
+            document.getElementById('disp-positions').innerText = PROFILE_DATA.positions;
+            document.getElementById('disp-stats').innerText = PROFILE_DATA.stats;
+            document.getElementById('disp-ncaa-id').innerText = PROFILE_DATA.ncaaId;
 
-            // 2. 管理者によるURLベースの動的パラメータ適用
-            if (customVideo) {
-                document.getElementById('iframe-primary').src = `https://www.youtube.com/embed/${customVideo}`;
-            }
-            if (customGpa) {
-                document.getElementById('disp-gpa').innerText = `GPA ${customGpa}`;
-            }
-            if (customStats) {
-                document.getElementById('disp-stats').innerText = customStats;
-            }
+            document.getElementById('iframe-primary').src = `https://www.youtube.com/embed/${PROFILE_DATA.youtubeVideo1}`;
+            document.getElementById('title-primary').innerText = PROFILE_DATA.titleVideo1;
+            document.getElementById('desc-primary').innerText = PROFILE_DATA.descVideo1;
+
+            document.getElementById('iframe-secondary').src = `https://www.youtube.com/embed/${PROFILE_DATA.youtubeVideo2}`;
+            document.getElementById('title-secondary').innerText = PROFILE_DATA.titleVideo2;
+            document.getElementById('desc-secondary').innerText = PROFILE_DATA.descVideo2;
         });
 
-        // お気に入り登録の双方向同期
-        async function toggleCoachFavorite() {
-            const btn = document.getElementById('btn-fav');
-            const icon = document.getElementById('star-icon');
-            const text = document.getElementById('fav-text');
-
-            const isFav = icon.classList.contains('text-amber-400');
-
-            if (!isFav) {
-                icon.className = 'text-amber-400';
-                text.innerText = 'Bookmarked in Recruiting Portal';
-                btn.classList.add('border-amber-500');
-                await logInteraction('favorite', `Bookmarked by ${coachParam || 'Anonymous Coach'}`);
-            } else {
-                icon.className = 'text-slate-400';
-                text.innerText = 'Bookmark Candidate';
-                btn.classList.remove('border-amber-500');
-            }
-        }
-
-        // フォーム送信（プライベート連絡・リクエスト）
-        async function handleFormSubmit(e) {
+        // 問い合わせ送信処理
+        async function submitMessage(e) {
             e.preventDefault();
+            const name = document.getElementById('coach-name').value;
             const email = document.getElementById('coach-email').value;
-            const reqType = document.getElementById('request-type').value;
+            const type = document.getElementById('inquiry-type').value;
             const msg = document.getElementById('coach-message').value;
-            const statusDiv = document.getElementById('form-status');
+            const resDiv = document.getElementById('form-response');
 
-            statusDiv.className = 'text-xs text-center font-bold py-2 rounded-lg bg-blue-900/50 text-blue-200 block';
-            statusDiv.innerText = 'Transmitting message to Supabase...';
+            resDiv.className = 'text-xs text-center font-bold py-3 rounded-lg bg-blue-900/50 text-blue-200 block';
+            resDiv.innerText = 'Sending message...';
 
             try {
                 const { error } = await supabase
                     .from('coach_interactions')
                     .insert([{
-                        coach_id: coachParam || 'Direct Outreach',
-                        action_type: `Request: ${reqType}`,
+                        coach_id: name,
+                        action_type: type,
                         message_body: msg,
                         contact_email: email
                     }]);
 
                 if (error) throw error;
 
-                statusDiv.className = 'text-xs text-center font-bold py-2 rounded-lg bg-emerald-900/50 text-emerald-200 block';
-                statusDiv.innerText = '✅ Message sent successfully! Akihiro & Agency will respond via email shortly.';
-                document.getElementById('interaction-form').reset();
+                resDiv.className = 'text-xs text-center font-bold py-3 rounded-lg bg-emerald-900/50 text-emerald-200 block';
+                resDiv.innerText = '✅ Message sent successfully! Akihiro & Agency will get back to you shortly.';
+                document.getElementById('contactForm').reset();
             } catch (err) {
                 console.error(err);
-                statusDiv.className = 'text-xs text-center font-bold py-2 rounded-lg bg-rose-900/50 text-rose-200 block';
-                statusDiv.innerText = '⚠️ Failed to send message. Please try again.';
-            }
-        }
-
-        // Supabaseへのログ保存処理
-        async function logInteraction(actionType, messageBody) {
-            try {
-                await supabase
-                    .from('coach_interactions')
-                    .insert([{
-                        coach_id: coachParam || 'Anonymous',
-                        action_type: actionType,
-                        message_body: messageBody
-                    }]);
-            } catch (err) {
-                console.warn('Log error:', err);
+                resDiv.className = 'text-xs text-center font-bold py-3 rounded-lg bg-rose-900/50 text-rose-200 block';
+                resDiv.innerText = '⚠️ Failed to send message. Please try again or email directly.';
             }
         }
     </script>

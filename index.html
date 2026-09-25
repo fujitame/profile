@@ -63,24 +63,40 @@
             </h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- メインハイライト (NJCAA D1) -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/60 shadow-lg">
-                    <div class="aspect-video w-full">
-                        <iframe id="iframe-primary" class="w-full h-full" src="" title="NJCAA Highlights" frameborder="0" allowfullscreen></iframe>
+                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/60 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-video w-full">
+                            <iframe id="iframe-primary" class="w-full h-full" src="https://www.youtube.com/embed/GYwZrTe9pqw" title="NJCAA Highlights" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 id="title-primary" class="font-bold text-sm text-slate-200">2025-26 NJCAA D1 Season Highlights</h3>
+                            <p id="desc-primary" class="text-xs text-slate-400 mt-1">Harcum College (PA) | Flank attack, 1v1 breakthroughs & chance creation.</p>
+                        </div>
                     </div>
-                    <div class="p-4">
-                        <h3 id="title-primary" class="font-bold text-sm text-slate-200">2025-26 NJCAA D1 Season Highlights</h3>
-                        <p id="desc-primary" class="text-xs text-slate-400 mt-1">Harcum College (PA) | Flank attack & 1v1 breakthroughs.</p>
+                    <div class="px-4 pb-4">
+                        <a id="link-primary" href="https://youtu.be/GYwZrTe9pqw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 bg-red-600/90 hover:bg-red-600 text-white rounded text-xs font-bold transition">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            Watch on YouTube
+                        </a>
                     </div>
                 </div>
 
                 <!-- サブハイライト (UPSL Irvine FC) -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/60 shadow-lg">
-                    <div class="aspect-video w-full">
-                        <iframe id="iframe-secondary" class="w-full h-full" src="" title="UPSL Clips" frameborder="0" allowfullscreen></iframe>
+                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/60 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-video w-full">
+                            <iframe id="iframe-secondary" class="w-full h-full" src="https://www.youtube.com/embed/mDg81hUIL8k" title="UPSL Clips" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 id="title-secondary" class="font-bold text-sm text-slate-200">Summer 2026 UPSL Matches (Irvine FC)</h3>
+                            <p id="desc-secondary" class="text-xs text-slate-400 mt-1">SoCal Premier League | Cutback assists & FK precision.</p>
+                        </div>
                     </div>
-                    <div class="p-4">
-                        <h3 id="title-secondary" class="font-bold text-sm text-slate-200">Summer 2026 UPSL Matches (Irvine FC)</h3>
-                        <p id="desc-secondary" class="text-xs text-slate-400 mt-1">SoCal Premier League | Cutback assists & set-piece precision.</p>
+                    <div class="px-4 pb-4">
+                        <a id="link-secondary" href="https://www.youtube.com/watch?v=mDg81hUIL8k" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 bg-red-600/90 hover:bg-red-600 text-white rounded text-xs font-bold transition">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            Watch on YouTube
+                        </a>
                     </div>
                 </div>
             </div>
@@ -176,11 +192,14 @@
             document.getElementById('disp-stats').innerText = PROFILE_DATA.stats;
             document.getElementById('disp-ncaa-id').innerText = PROFILE_DATA.ncaaId;
 
+            // 動画埋め込み & 直リンクボタンの設定
             document.getElementById('iframe-primary').src = `https://www.youtube.com/embed/${PROFILE_DATA.youtubeVideo1}`;
+            document.getElementById('link-primary').href = `https://youtu.be/${PROFILE_DATA.youtubeVideo1}`;
             document.getElementById('title-primary').innerText = PROFILE_DATA.titleVideo1;
             document.getElementById('desc-primary').innerText = PROFILE_DATA.descVideo1;
 
             document.getElementById('iframe-secondary').src = `https://www.youtube.com/embed/${PROFILE_DATA.youtubeVideo2}`;
+            document.getElementById('link-secondary').href = `https://www.youtube.com/watch?v=${PROFILE_DATA.youtubeVideo2}`;
             document.getElementById('title-secondary').innerText = PROFILE_DATA.titleVideo2;
             document.getElementById('desc-secondary').innerText = PROFILE_DATA.descVideo2;
         });

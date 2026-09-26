@@ -3,277 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akihiro Fujikawa | Transfer Candidate Profile</title>
-    <!-- Tailwind CSS CDN -->
+    <meta name="description" content="Akihiro Fujikawa — Harcum College NJCAA D1 sophomore and Fall 2027 NCAA transfer candidate.">
+    <title>Akihiro Fujikawa | NCAA Transfer Candidate Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- EmailJS SDK: used for coach notification emails without a separate server -->
+    <!-- EmailJS SDK: sends coach inquiry notifications to the configured Gmail service -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen">
 
-    <!-- ヘッダー / アスリートヒーローセクション（写真統合） -->
-    <header class="max-w-4xl mx-auto pt-8 pb-6 px-4 border-b border-slate-800">
-        <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 bg-slate-800/50 p-5 md:p-6 rounded-2xl border border-slate-700/60 shadow-xl">
-            
-            <!-- プレイヤーメイン写真（効果的トリミング枠） -->
-            <div class="w-40 h-52 md:w-48 md:h-64 flex-shrink-0 rounded-xl overflow-hidden border-2 border-amber-500/40 shadow-lg relative group">
-                <img src="Akihiro_Harcum.png" alt="Akihiro Fujikawa" class="w-full h-full object-cover object-top transition duration-300 group-hover:scale-105">
-                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent p-2 text-center">
-                    <span class="text-[10px] font-black text-amber-400 uppercase tracking-widest block">NJCAA D1 #14</span>
-                </div>
-            </div>
+    <!-- HERO: coach should understand who he is within seconds -->
+    <header class="max-w-5xl mx-auto pt-5 sm:pt-8 pb-5 px-4 border-b border-slate-800">
+        <div class="bg-slate-900/80 p-4 sm:p-6 rounded-2xl border border-slate-800 shadow-xl">
+            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-5 md:gap-7">
 
-            <!-- プロフィール基本情報 -->
-            <div class="flex flex-col justify-between flex-grow text-center md:text-left">
-                <div>
-                    <div class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-xs font-bold mb-2">
-                        NCAA Transfer Candidate (Fall 2027)
+                <!-- Player photo -->
+                <div class="w-32 h-44 sm:w-36 sm:h-48 md:w-44 md:h-60 flex-shrink-0 rounded-xl overflow-hidden border border-amber-500/40 shadow-lg relative">
+                    <img src="Akihiro_Harcum.png" alt="Akihiro Fujikawa" class="w-full h-full object-cover object-top" fetchpriority="high">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent p-2 text-center">
+                        <span class="text-[10px] font-black text-amber-400 uppercase tracking-widest block">NJCAA D1 #14</span>
                     </div>
-                    <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight">AKIHIRO FUJIKAWA</h1>
-                    <p class="text-slate-300 text-sm md:text-base font-semibold mt-1">
-                        Wide Defender / Fullback | Harcum College (PA)
-                    </p>
-                    <p class="text-slate-400 text-xs mt-1">
-                        Sophomore | NJCAA D1 #14<br>NCAA ID: <span id="disp-ncaa-id" class="text-slate-200 font-mono">250663641</span><br><span class="text-amber-400/80">Eligibility Status: Update Pending</span>
-                    </p>
                 </div>
 
-                <!-- アクションボタン群 -->
-                <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-4 md:mt-0">
-                    <!-- Instagram Link Button -->
-                    <a href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-90 text-white font-bold rounded-lg text-sm flex items-center gap-2 transition shadow-md">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        @a93914
-                    </a>
-                    <a href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg text-sm transition shadow-md">
-                        Email Player
-                    </a>
-                    <a href="#contact-form" class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg text-sm transition shadow-md">
-                        Request Full Match
+                <!-- Essential identity -->
+                <div class="flex flex-col justify-between flex-grow w-full text-center md:text-left">
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-amber-500/15 text-amber-400 border border-amber-500/25 rounded-full text-[11px] sm:text-xs font-bold mb-2">
+                            NCAA Transfer Candidate · Fall 2027
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">AKIHIRO FUJIKAWA</h1>
+                        <p class="text-slate-200 text-sm sm:text-base font-semibold mt-2">
+                            Wide Defender / Fullback · Harcum College (PA)
+                        </p>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Sophomore · NJCAA D1 · #14 · Right-footed · 170 cm / 68 kg · GPA 3.28
+                        </p>
+                        <p class="text-slate-500 text-[11px] mt-1">
+                            NCAA ID: <span id="disp-ncaa-id" class="text-slate-300 font-mono">250663641</span>
+                        </p>
+                    </div>
+
+                    <!-- Coach-first CTA order -->
+                    <div class="grid grid-cols-2 md:flex md:flex-wrap items-stretch md:items-center gap-2.5 mt-5">
+                        <a href="#highlights" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg text-sm transition shadow-md text-center">
+                            Watch Highlights
+                        </a>
+                        <a href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-sm transition shadow-md text-center">
+                            Email Player
+                        </a>
+                        <a href="#contact-form" onclick="setTimeout(() => { const el = document.getElementById('inquiry-type'); if (el) el.value = 'Full Match Film Request'; }, 0)" class="col-span-2 md:col-span-1 px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg text-sm transition shadow-md text-center">
+                            Request Full Match
+                        </a>
+                    </div>
+                    <a href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center md:justify-start gap-1.5 text-slate-500 hover:text-amber-400 transition text-xs font-semibold mt-3">
+                        Instagram · @a93914
                     </a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- メインコンテンツ -->
-    <main class="max-w-4xl mx-auto px-4 py-8 space-y-10">
+    <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8 space-y-8 sm:space-y-10">
 
-        <!-- アカデミック & アスレチック スタッツ -->
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
-                <span class="text-xs text-slate-400 font-medium block">Academic Status</span>
-                <span id="disp-gpa" class="text-2xl font-bold text-amber-400">GPA 3.28</span>
-                <span class="text-[10px] text-slate-500 block mt-1">Harcum & OCC Credits</span>
+        <!-- QUICK SNAPSHOT -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4" aria-label="Player snapshot">
+            <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
+                <span class="text-[11px] text-slate-400 font-medium block">Academic</span>
+                <span id="disp-gpa" class="text-xl sm:text-2xl font-bold text-amber-400 block mt-0.5">GPA 3.28</span>
+                <span class="text-[10px] text-slate-500 block mt-1">Harcum & OCC coursework</span>
             </div>
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
-                <span class="text-xs text-slate-400 font-medium block">Physicals</span>
-                <span id="disp-physicals" class="text-xl font-bold text-slate-100">170cm / 68kg</span>
-                <span class="text-[10px] text-slate-500 block mt-1">5'7" / 150 lbs | Right-footed</span>
+            <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
+                <span class="text-[11px] text-slate-400 font-medium block">Physicals</span>
+                <span id="disp-physicals" class="text-lg sm:text-xl font-bold text-slate-100 block mt-0.5">170cm / 68kg</span>
+                <span class="text-[10px] text-slate-500 block mt-1">5'7" / 150 lbs · Right foot</span>
             </div>
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
-                <span class="text-xs text-slate-400 font-medium block">Positions</span>
-                <span id="disp-positions" class="text-lg md:text-xl font-bold text-slate-100">Wide Defender / Fullback</span>
+            <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
+                <span class="text-[11px] text-slate-400 font-medium block">Primary Role</span>
+                <span id="disp-positions" class="text-base sm:text-lg font-bold text-slate-100 block mt-0.5">Wide Defender / Fullback</span>
                 <span class="text-[10px] text-slate-500 block mt-1">Secondary: LM / LW</span>
             </div>
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
-                <span class="text-xs text-slate-400 font-medium block">NJCAA D1 Record</span>
-                <span id="disp-stats" class="text-xl font-bold text-slate-100">7 GP | 1G 1A</span>
-                <span class="text-[10px] text-slate-500 block mt-1">2025-26 Official Season</span>
+            <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
+                <span class="text-[11px] text-slate-400 font-medium block">2025-26 NJCAA D1</span>
+                <span id="disp-stats" class="text-lg sm:text-xl font-bold text-slate-100 block mt-0.5">7 GP · 1G · 1A</span>
+                <span class="text-[10px] text-slate-500 block mt-1">Official freshman season</span>
             </div>
         </section>
 
-        <!-- ACADEMIC & TRANSFER SNAPSHOT -->
+        <!-- COMPACT ATHLETIC IDENTITY -->
         <section class="space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div class="flex items-end justify-between gap-3 border-b border-slate-800 pb-2">
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 bg-amber-400 rounded-full"></span> Academic & Transfer Snapshot
+                    <span class="w-2.5 h-2.5 bg-amber-400 rounded-full flex-shrink-0"></span> Athletic Identity
                 </h2>
-                <span class="text-xs text-amber-400/80 font-mono uppercase tracking-wider">Update in Progress</span>
+                <span class="text-[10px] sm:text-xs text-slate-500 font-mono uppercase tracking-wider">Coach Snapshot</span>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80">
-                    <span class="text-xs text-slate-400 font-medium block">Academic Focus</span>
-                    <span id="disp-academic-focus" class="text-lg font-bold text-white block mt-1">General Studies / General Education Coursework</span>
-                    <span class="text-[10px] text-slate-500 block mt-1">Current coursework; specialization to be determined.</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+                    <span class="px-2 py-0.5 bg-amber-500/15 text-amber-400 text-[10px] font-black rounded uppercase">1v1</span>
+                    <h3 class="font-bold text-sm text-white mt-2">Change of Pace</h3>
+                    <p class="text-[11px] text-slate-400 leading-relaxed mt-1.5">Uses acceleration and close control to create separation wide.</p>
                 </div>
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80">
-                    <span class="text-xs text-slate-400 font-medium block">Transferable Credits</span>
-                    <span id="disp-transferable-credits" class="text-lg font-bold text-amber-400 block mt-1">Update Pending</span>
-                    <span class="text-[10px] text-slate-500 block mt-1">To be updated as transfer-credit evaluation progresses.</span>
+                <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+                    <span class="px-2 py-0.5 bg-blue-500/15 text-blue-400 text-[10px] font-black rounded uppercase">Technique</span>
+                    <h3 class="font-bold text-sm text-white mt-2">Ball Control</h3>
+                    <p class="text-[11px] text-slate-400 leading-relaxed mt-1.5">Receives, combines and protects the ball under pressure.</p>
                 </div>
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80">
-                    <span class="text-xs text-slate-400 font-medium block">Target Transfer</span>
-                    <span id="disp-expected-transfer" class="text-lg font-bold text-white block mt-1">Fall 2027</span>
-                    <span class="text-[10px] text-slate-500 block mt-1">4-year university transfer candidate</span>
+                <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+                    <span class="px-2 py-0.5 bg-emerald-500/15 text-emerald-400 text-[10px] font-black rounded uppercase">Transition</span>
+                    <h3 class="font-bold text-sm text-white mt-2">Positioning</h3>
+                    <p class="text-[11px] text-slate-400 leading-relaxed mt-1.5">Adjusts position to contribute on both sides of the ball.</p>
                 </div>
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80">
-                    <span class="text-xs text-slate-400 font-medium block">Eligibility Status</span>
-                    <span id="disp-eligibility-status" class="text-lg font-bold text-amber-400 block mt-1">Update Pending</span>
-                    <span class="text-[10px] text-slate-500 block mt-1">Status will be updated as eligibility documentation is confirmed.</span>
+                <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+                    <span class="px-2 py-0.5 bg-purple-500/15 text-purple-400 text-[10px] font-black rounded uppercase">Dead Ball</span>
+                    <h3 class="font-bold text-sm text-white mt-2">FK / CK Delivery</h3>
+                    <p class="text-[11px] text-slate-400 leading-relaxed mt-1.5">Right-footed set-piece service into dangerous areas.</p>
                 </div>
-            </div>
-
-            <div class="rounded-lg border border-amber-500/20 bg-amber-500/5 px-4 py-3">
-                <p class="text-xs text-slate-300 leading-relaxed">
-                    <span class="font-bold text-amber-400">Transfer information update:</span> Transferable credits, detailed academic pathway, and eligibility status are being updated as the transfer process progresses.
-                </p>
             </div>
         </section>
 
-        <!-- ATHLETIC IDENTITY & KEY STRENGTHS セクション -->
-        <section class="space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <!-- HIGHLIGHTS: moved ahead of transfer details to surface football evidence earlier -->
+        <section id="highlights" class="space-y-4 scroll-mt-5">
+            <div class="flex items-end justify-between gap-3 border-b border-slate-800 pb-2">
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 bg-amber-400 rounded-full"></span> Athletic Identity & Key Strengths
+                    <span class="w-2.5 h-2.5 bg-blue-500 rounded-full flex-shrink-0"></span> Match Highlights
                 </h2>
-                <span class="text-xs text-amber-400/80 font-mono uppercase tracking-wider">Player Scouting Profile</span>
+                <span class="text-[10px] sm:text-xs text-slate-500 font-mono uppercase tracking-wider">Film First</span>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-4">
-                <!-- Strength 1: 1v1 Specialist -->
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80 hover:border-amber-500/50 transition">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 text-[10px] font-black rounded uppercase">Flank Attack</span>
-                        <h3 class="font-bold text-base text-white">1v1 Specialist <span class="text-slate-400 text-xs font-normal">(Explosive Change)</span></h3>
-                    </div>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Uses change of pace, close control and acceleration to attack the outside shoulder, create separation, and deliver final balls or cut inside for scoring opportunities.
-                    </p>
-                </div>
 
-                <!-- Strength 2: Technical Proficiency -->
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80 hover:border-amber-500/50 transition">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-[10px] font-black rounded uppercase">Technique</span>
-                        <h3 class="font-bold text-base text-white">Technical Proficiency & Close Control</h3>
+            <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
+                <!-- NJCAA -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-lg flex flex-col">
+                    <div class="aspect-video w-full">
+                        <iframe id="iframe-primary" class="w-full h-full" src="https://www.youtube.com/embed/GYwZrTe9pqw" title="2025-26 NJCAA D1 Season Highlights" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Comfortable receiving, combining and protecting the ball under pressure, with an emphasis on clean combinations and possession in tight areas.
-                    </p>
-                </div>
-
-                <!-- Strength 3: Tactical Intelligence -->
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80 hover:border-amber-500/50 transition">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] font-black rounded uppercase">IQ & Vision</span>
-                        <h3 class="font-bold text-base text-white">Tactical Intelligence & Positioning</h3>
-                    </div>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Recognizes transition moments and adjusts positioning to contribute on both sides of the ball, including movement into advanced areas in the final third.
-                    </p>
-                </div>
-
-                <!-- Strength 4: Set-Piece Specialist -->
-                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700/80 hover:border-amber-500/50 transition">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2 py-0.5 bg-purple-500/20 text-purple-400 text-[10px] font-black rounded uppercase">Dead Ball</span>
-                        <h3 class="font-bold text-base text-white">Set-Piece Specialist <span class="text-slate-400 text-xs font-normal">(FK & CK)</span></h3>
-                    </div>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Right-footed set-piece delivery on corner kicks and free kicks, with an emphasis on accuracy and service into dangerous areas.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ハイライト動画セクション -->
-        <section class="space-y-4">
-            <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span> Match Highlights
-            </h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- メインハイライト (NJCAA D1) -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/60 shadow-lg flex flex-col justify-between">
-                    <div>
-                        <div class="aspect-video w-full">
-                            <iframe id="iframe-primary" class="w-full h-full" src="https://www.youtube.com/embed/GYwZrTe9pqw" title="NJCAA Highlights" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="p-4">
-                            <h3 id="title-primary" class="font-bold text-sm text-slate-200">2025-26 NJCAA D1 Season Highlights</h3>
-                            <p id="desc-primary" class="text-xs text-slate-400 mt-1">Harcum College (PA) | Flank attack, 1v1 breakthroughs & chance creation.</p>
-                        </div>
-                    </div>
-                    <div class="px-4 pb-4">
-                        <a id="link-primary" href="https://youtu.be/GYwZrTe9pqw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 bg-red-600/90 hover:bg-red-600 text-white rounded text-xs font-bold transition">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                            Watch on YouTube
-                        </a>
+                    <div class="p-4 flex-1">
+                        <div class="text-[10px] font-black uppercase tracking-wider text-blue-400">College Season</div>
+                        <h3 id="title-primary" class="font-bold text-sm text-slate-100 mt-1">2025-26 NJCAA D1 Season Highlights</h3>
+                        <p id="desc-primary" class="text-xs text-slate-400 mt-1.5">Harcum College (PA) · Wide play, 1v1 actions & chance creation.</p>
+                        <a id="link-primary" href="https://youtu.be/GYwZrTe9pqw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-3 px-3 py-1.5 bg-red-600/90 hover:bg-red-600 text-white rounded text-xs font-bold transition">Watch on YouTube</a>
                     </div>
                 </div>
 
-                <!-- サブハイライト (UPSL Irvine FC) -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/60 shadow-lg flex flex-col justify-between">
-                    <div>
-                        <div class="aspect-video w-full">
-                            <iframe id="iframe-secondary" class="w-full h-full" src="https://www.youtube.com/embed/mDg81hUIL8k" title="UPSL Clips" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="p-4">
-                            <h3 id="title-secondary" class="font-bold text-sm text-slate-200">Summer 2026 UPSL Matches (Irvine FC)</h3>
-                            <p id="desc-secondary" class="text-xs text-slate-400 mt-1">SoCal Premier League | Cutback assists & FK precision.</p>
-                        </div>
+                <!-- UPSL -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-lg flex flex-col">
+                    <div class="aspect-video w-full">
+                        <iframe id="iframe-secondary" class="w-full h-full" src="https://www.youtube.com/embed/mDg81hUIL8k" title="Summer 2026 UPSL Matches" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <div class="px-4 pb-4">
-                        <a id="link-secondary" href="https://www.youtube.com/watch?v=mDg81hUIL8k" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 bg-red-600/90 hover:bg-red-600 text-white rounded text-xs font-bold transition">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                            Watch on YouTube
-                        </a>
+                    <div class="p-4 flex-1">
+                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-400">Summer 2026</div>
+                        <h3 id="title-secondary" class="font-bold text-sm text-slate-100 mt-1">Summer 2026 UPSL Matches (Irvine FC)</h3>
+                        <p id="desc-secondary" class="text-xs text-slate-400 mt-1.5">SoCal Premier League · Cutback assists & FK delivery.</p>
+                        <a id="link-secondary" href="https://www.youtube.com/watch?v=mDg81hUIL8k" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-3 px-3 py-1.5 bg-red-600/90 hover:bg-red-600 text-white rounded text-xs font-bold transition">Watch on YouTube</a>
                     </div>
                 </div>
             </div>
-            <div class="bg-slate-800/60 rounded-xl border border-blue-500/20 px-5 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+
+            <div class="bg-blue-500/5 rounded-xl border border-blue-500/20 px-4 sm:px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
                     <h3 class="font-bold text-sm text-white">Full Match Film</h3>
                     <p class="text-xs text-slate-400 mt-1">Full-match footage is available to college coaches upon request.</p>
                 </div>
-                <a href="#contact-form" class="shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition">
+                <a href="#contact-form" class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition">
                     Request Full Match
                 </a>
             </div>
         </section>
 
-        <!-- スカウティング評価 -->
-        <section class="bg-slate-800/40 p-6 rounded-xl border border-slate-700/60 space-y-3">
-            <h2 class="text-sm font-bold text-amber-400 uppercase tracking-wider">Independent D1 Evaluation</h2>
-            <blockquote class="text-sm italic text-slate-300 border-l-2 border-amber-500 pl-4 py-1">
-                "Possesses good technical ability with the ball at feet. A possession-oriented playing program suits your skill best." 
-                <span class="block text-xs font-normal text-slate-400 mt-2">— Chris Volk, Assistant Men's Soccer Coach, UC Riverside | El Camino Combine</span>
-            </blockquote>
+        <!-- ACADEMIC & TRANSFER: compact and clearly marked as in-progress -->
+        <section class="space-y-4">
+            <div class="flex items-end justify-between gap-3 border-b border-slate-800 pb-2">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 bg-amber-400 rounded-full flex-shrink-0"></span> Academic & Transfer
+                </h2>
+                <span class="text-[10px] sm:text-xs text-amber-400/80 font-mono uppercase tracking-wider">Update Pending</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                    <span class="text-[11px] text-slate-400 font-medium block">Academic Focus</span>
+                    <span id="disp-academic-focus" class="text-base sm:text-lg font-bold text-white block mt-1">General Studies</span>
+                    <span class="text-[10px] text-slate-500 block mt-1">General education coursework</span>
+                </div>
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                    <span class="text-[11px] text-slate-400 font-medium block">Transferable Credits</span>
+                    <span id="disp-transferable-credits" class="text-base sm:text-lg font-bold text-amber-400 block mt-1">Update Pending</span>
+                    <span class="text-[10px] text-slate-500 block mt-1">To be confirmed during transfer review</span>
+                </div>
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                    <span class="text-[11px] text-slate-400 font-medium block">Target Transfer</span>
+                    <span id="disp-expected-transfer" class="text-base sm:text-lg font-bold text-white block mt-1">Fall 2027</span>
+                    <span class="text-[10px] text-slate-500 block mt-1">4-year university transfer</span>
+                </div>
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                    <span class="text-[11px] text-slate-400 font-medium block">Eligibility Status</span>
+                    <span id="disp-eligibility-status" class="text-base sm:text-lg font-bold text-amber-400 block mt-1">Update Pending</span>
+                    <span class="text-[10px] text-slate-500 block mt-1">To be updated as documentation is confirmed</span>
+                </div>
+            </div>
+
+            <div class="rounded-lg border border-amber-500/20 bg-amber-500/5 px-4 py-3">
+                <p class="text-[11px] text-slate-300 leading-relaxed">
+                    <span class="font-bold text-amber-400">Transfer information:</span> Transferable credits, academic pathway details, and eligibility status are being updated as the transfer process progresses.
+                </p>
+            </div>
         </section>
 
-        <!-- 監督・スカウト専用 問い合わせフォーム -->
-        <section id="contact-form" class="bg-slate-800 p-6 md:p-8 rounded-xl border border-slate-700 shadow-xl space-y-6">
+        <!-- THIRD-PARTY EVALUATION -->
+        <section class="bg-slate-900/70 p-5 sm:p-6 rounded-xl border border-slate-800 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+                <h2 class="text-sm font-bold text-amber-400 uppercase tracking-wider">Independent D1 Evaluation</h2>
+                <span class="text-[10px] text-slate-500 uppercase tracking-wider">El Camino Combine</span>
+            </div>
+            <blockquote class="text-sm italic text-slate-300 border-l-2 border-amber-500 pl-4 py-1">
+                "Possesses good technical ability with the ball at feet. A possession-oriented playing program suits your skill best."
+            </blockquote>
+            <p class="text-xs text-slate-400">— Chris Volk, Assistant Men's Soccer Coach, UC Riverside</p>
+        </section>
+
+        <!-- COACH CONTACT -->
+        <section id="contact-form" class="bg-slate-900 p-5 sm:p-7 rounded-xl border border-slate-800 shadow-xl space-y-5 scroll-mt-5">
             <div>
-                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
                     <div>
-                        <h2 class="text-2xl font-bold text-white">Coach Contact & Inquiry Portal</h2>
-                <p class="text-xs text-slate-400 mt-1">
-                    College coaches can contact Akihiro directly, request full-match footage, or inquire about roster fit and recruitment.
-                </p>
+                        <h2 class="text-2xl font-bold text-white">Coach Contact</h2>
+                        <p class="text-xs text-slate-400 mt-1.5">For recruiting inquiries, full-match requests, roster questions, or a call with Akihiro.</p>
                     </div>
-                    <a href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="inline-flex items-center justify-center px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-xs font-bold transition">
-                        Email: fujiakihiro8@gmail.com
+                    <a href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="inline-flex items-center justify-center px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-lg text-xs font-black transition">
+                        fujiakihiro8@gmail.com
                     </a>
                 </div>
             </div>
 
             <form id="contactForm" onsubmit="submitMessage(event)" class="space-y-4">
-                <div class="grid md:grid-cols-2 gap-4">
+                <div class="grid sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Coach Name / University</label>
-                        <input type="text" id="coach-name" name="coach_name" maxlength="120" autocomplete="name" required placeholder="Coach Smith / University Name" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Coach Name / University</label>
+                        <input type="text" id="coach-name" name="coach_name" maxlength="120" autocomplete="name" required placeholder="Coach Smith / University Name" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Your Email Address</label>
-                        <input type="email" id="coach-email" name="coach_email" maxlength="160" autocomplete="email" required placeholder="coach@university.edu" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Your Email Address</label>
+                        <input type="email" id="coach-email" name="coach_email" maxlength="160" autocomplete="email" required placeholder="coach@university.edu" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Inquiry Type</label>
-                    <select id="inquiry-type" name="inquiry_type" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Inquiry Type</label>
+                    <select id="inquiry-type" name="inquiry_type" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
                         <option value="Full Match Film Request">Request Full Match Video</option>
                         <option value="Call / Campus Visit">Schedule Call / Campus Visit</option>
                         <option value="Scholarship & Roster Status">Scholarship & Roster Inquiry</option>
@@ -281,16 +256,16 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Message</label>
-                    <textarea id="coach-message" name="message" rows="4" maxlength="5000" required placeholder="Enter your message here..." class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Message</label>
+                    <textarea id="coach-message" name="message" rows="4" maxlength="5000" required placeholder="Enter your message here..." class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
                 </div>
                 <!-- Anti-spam honeypot: real coaches will not see this field. -->
                 <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
                     <label for="website">Website</label>
                     <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                 </div>
-                <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-sm transition shadow-md">
-                    Send Direct Message
+                <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-lg text-sm transition shadow-md">
+                    Send Message
                 </button>
             </form>
             <div id="form-response" class="hidden text-xs text-center font-bold py-3 rounded-lg"></div>
@@ -298,65 +273,52 @@
 
     </main>
 
-    <footer class="max-w-4xl mx-auto py-8 text-center text-xs text-slate-500 border-t border-slate-800 space-y-3">
-        <div class="flex justify-center items-center gap-4">
-            <a href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-400 transition font-semibold flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Instagram: @a93914
-            </a>
-        </div>
-        <p>© 2026 Akihiro Fujikawa Recruitment Profile. Direct Contact: fujiakihiro8@gmail.com</p>
-        <p class="text-[10px] text-slate-600">Profile data: General information current; Transferable Credits / Academic Pathway / Eligibility Status — Update Pending</p>
+    <footer class="max-w-5xl mx-auto py-7 px-4 text-center text-xs text-slate-500 border-t border-slate-800 space-y-2">
+        <a href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-400 transition font-semibold">Instagram · @a93914</a>
+        <p>© 2026 Akihiro Fujikawa Recruitment Profile · Direct Contact: fujiakihiro8@gmail.com</p>
+        <p class="text-[10px] text-slate-600">Transferable Credits / Academic Pathway / Eligibility Status — Update Pending</p>
     </footer>
 
-    <!-- データ管理・JS処理 -->
     <script>
         // =========================================================
         // ★ PROFILE DATA — update confirmed information here
+        // Transferable Credits / Academic Focus / Eligibility Status
+        // can be updated without changing the page structure.
         // =========================================================
         const PROFILE_DATA = {
             gpa: "GPA 3.28",
             physicals: "170cm / 68kg",
             positions: "Wide Defender / Fullback",
-            stats: "7 GP | 1G 1A",
+            stats: "7 GP · 1G · 1A",
             ncaaId: "250663641",
 
-            academicFocus: "General Studies / General Education Coursework",
+            academicFocus: "General Studies",
             transferableCredits: "Update Pending",
             expectedTransfer: "Fall 2027",
             eligibilityStatus: "Update Pending",
 
             youtubeVideo1: "GYwZrTe9pqw",
             titleVideo1: "2025-26 NJCAA D1 Season Highlights",
-            descVideo1: "Harcum College (PA) | Wide play, 1v1 actions & chance creation.",
+            descVideo1: "Harcum College (PA) · Wide play, 1v1 actions & chance creation.",
 
             youtubeVideo2: "mDg81hUIL8k",
             titleVideo2: "Summer 2026 UPSL Matches (Irvine FC)",
-            descVideo2: "SoCal Premier League | Cutback assists & FK delivery."
-        };
-
-        // =========================================================
-        // ★ COACH CONTACT SETTINGS
-        // EmailJS must be configured in the EmailJS dashboard first.
-        // Gmail can be connected there as the sending service.
-        // Replace the three PASTE_* values below after setup.
-        // =========================================================
-        const EMAILJS_CONFIG = {
-            publicKey: "PASTE_EMAILJS_PUBLIC_KEY",
-            serviceId: "PASTE_EMAILJS_SERVICE_ID",
-            templateId: "PASTE_EMAILJS_TEMPLATE_ID",
-            notificationEmail: "fujiakihiro8@gmail.com"
+            descVideo2: "SoCal Premier League · Cutback assists & FK delivery."
         };
 
         const SUPABASE_URL = 'https://cjrabdfdtrufbpjmqddh.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_u0hVckGZrWePM3j1BHDBsQ_YImzJ4D2';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        const emailJsConfigured = Object.values(EMAILJS_CONFIG)
-            .filter((value) => value !== EMAILJS_CONFIG.notificationEmail)
-            .every((value) => value && !value.startsWith('PASTE_'));
+        const EMAILJS_CONFIG = {
+            publicKey: "KcleHcUHXOYE2a2Hg",
+            serviceId: "service_b5sdwao",
+            templateId: "template_e1lpa08",
+            notificationEmail: "fujiakihiro8@gmail.com"
+        };
 
-        if (emailJsConfigured && window.emailjs) {
+        // Initialize EmailJS before any send call.
+        if (window.emailjs) {
             emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
         }
 
@@ -366,6 +328,7 @@
             document.getElementById('disp-positions').innerText = PROFILE_DATA.positions;
             document.getElementById('disp-stats').innerText = PROFILE_DATA.stats;
             document.getElementById('disp-ncaa-id').innerText = PROFILE_DATA.ncaaId;
+
             document.getElementById('disp-academic-focus').innerText = PROFILE_DATA.academicFocus;
             document.getElementById('disp-transferable-credits').innerText = PROFILE_DATA.transferableCredits;
             document.getElementById('disp-expected-transfer').innerText = PROFILE_DATA.expectedTransfer;
@@ -410,11 +373,21 @@
             button.classList.toggle('cursor-not-allowed', disabled);
         }
 
-        async function saveToSupabase({ name, email, type, msg, requestId }) {
-            // Keep the existing table/column contract. This avoids requiring a new migration.
-            const archivedMessage = `[Request ID: ${requestId}]
+        function getErrorSummary(error) {
+            if (!error) return 'Unknown error';
+            return {
+                message: error.message || String(error),
+                status: error.status,
+                text: error.text,
+                code: error.code,
+                details: error.details,
+                hint: error.hint
+            };
+        }
 
-${msg}`;
+        async function saveToSupabase({ name, email, type, msg, requestId }) {
+            // Keep the existing table/column contract. No migration is required by this HTML.
+            const archivedMessage = `[Request ID: ${requestId}]\n\n${msg}`;
 
             const { error } = await supabase
                 .from('coach_interactions')
@@ -426,20 +399,14 @@ ${msg}`;
                 }]);
 
             if (error) {
-                // Do not expose database internals to the coach, but keep detailed diagnostics in DevTools.
-                console.error('[Supabase] coach_interactions INSERT failed', {
-                    code: error.code,
-                    message: error.message,
-                    details: error.details,
-                    hint: error.hint
-                });
+                console.error('[Supabase] coach_interactions INSERT failed', getErrorSummary(error));
                 throw error;
             }
         }
 
         async function sendEmailNotification({ name, email, type, msg, requestId }) {
-            if (!emailJsConfigured || !window.emailjs) {
-                throw new Error('EMAILJS_NOT_CONFIGURED');
+            if (!window.emailjs) {
+                throw new Error('EMAILJS_SDK_NOT_LOADED');
             }
 
             await emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
@@ -459,7 +426,8 @@ ${msg}`;
                 }),
                 player_name: 'Akihiro Fujikawa',
                 player_email: EMAILJS_CONFIG.notificationEmail,
-                reply_to: email
+                reply_to: email,
+                source_url: window.location.href
             });
         }
 
@@ -471,10 +439,10 @@ ${msg}`;
             const email = document.getElementById('coach-email').value.trim();
             const type = document.getElementById('inquiry-type').value;
             const msg = document.getElementById('coach-message').value.trim();
-            const honeypot = document.getElementById('website').value.trim();
+            const honeypot = document.getElementById('website')?.value.trim() || '';
             const requestId = makeRequestId();
 
-            // Basic anti-spam and validation.
+            // Quietly absorb obvious bot submissions without sending or storing them.
             if (honeypot) {
                 showFormMessage('success', 'Thank you. Your message has been received.');
                 form.reset();
@@ -491,7 +459,6 @@ ${msg}`;
                 return;
             }
 
-            // Prevent accidental double-click / duplicate submissions.
             setSubmitState(true, 'Sending...');
             showFormMessage('info', 'Sending your message...');
 
@@ -500,39 +467,49 @@ ${msg}`;
             let emailError = null;
             let databaseError = null;
 
-            // 1) Send notification email.
-            try {
-                await sendEmailNotification({ name, email, type, msg, requestId });
+            // Deliver both ways independently so one failure does not prevent the other.
+            const [emailResult, databaseResult] = await Promise.allSettled([
+                sendEmailNotification({ name, email, type, msg, requestId }),
+                saveToSupabase({ name, email, type, msg, requestId })
+            ]);
+
+            if (emailResult.status === 'fulfilled') {
                 emailOk = true;
-            } catch (err) {
-                emailError = err;
-                console.error('[Email Notification] failed', err);
+            } else {
+                emailError = emailResult.reason;
+                console.error('[Email Notification] failed', getErrorSummary(emailError));
             }
 
-            // 2) Archive the same inquiry in Supabase.
-            try {
-                await saveToSupabase({ name, email, type, msg, requestId });
+            if (databaseResult.status === 'fulfilled') {
                 databaseOk = true;
-            } catch (err) {
-                databaseError = err;
+            } else {
+                databaseError = databaseResult.reason;
             }
 
             if (emailOk && databaseOk) {
                 showFormMessage('success', '✅ Message received successfully. Akihiro will get back to you shortly.');
                 form.reset();
             } else if (emailOk && !databaseOk) {
-                showFormMessage('warning', '✅ Your message was sent successfully. Please note that the backup record could not be saved automatically.');
+                showFormMessage('warning', '✅ Your message was sent successfully. The backup record could not be saved automatically.');
                 form.reset();
+                console.error('[Coach Contact] email succeeded but database archive failed', {
+                    requestId,
+                    databaseError: getErrorSummary(databaseError)
+                });
             } else if (!emailOk && databaseOk) {
-                if (emailError?.message === 'EMAILJS_NOT_CONFIGURED') {
-                    showFormMessage('warning', '✅ Your message was recorded, but email notification is not configured yet. Please email Akihiro directly for urgent inquiries.');
-                } else {
-                    showFormMessage('warning', '✅ Your message was recorded, but email notification failed. Please email Akihiro directly for urgent inquiries.');
-                }
+                showFormMessage('warning', '✅ Your message was recorded, but email notification failed. Please email Akihiro directly for urgent inquiries.');
                 form.reset();
+                console.error('[Coach Contact] database archive succeeded but email notification failed', {
+                    requestId,
+                    emailError: getErrorSummary(emailError)
+                });
             } else {
                 showFormMessage('error', '⚠️ We could not complete the message submission. Please email Akihiro directly at fujiakihiro8@gmail.com.');
-                console.error('[Coach Contact] both delivery paths failed', { emailError, databaseError, requestId });
+                console.error('[Coach Contact] both delivery paths failed', {
+                    requestId,
+                    emailError: getErrorSummary(emailError),
+                    databaseError: getErrorSummary(databaseError)
+                });
             }
 
             setSubmitState(false, 'Send Message');

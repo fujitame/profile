@@ -235,7 +235,7 @@
                 </div>
             </div>
 
-            <form id="contactForm" onsubmit="submitMessage(event)" class="space-y-4">
+            <form id="contactForm" class="space-y-4" method="post" action="#contact-form">
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 mb-1.5">Coach Name / University</label>
@@ -280,240 +280,378 @@
     </footer>
 
     <script>
-        // =========================================================
-        // ★ PROFILE DATA — update confirmed information here
-        // Transferable Credits / Academic Focus / Eligibility Status
-        // can be updated without changing the page structure.
-        // =========================================================
-        const PROFILE_DATA = {
-            gpa: "GPA 3.28",
-            physicals: "170cm / 68kg",
-            positions: "Wide Defender / Fullback",
-            stats: "7 GP · 1G · 1A",
-            ncaaId: "250663641",
+        (() => {
+            'use strict';
 
-            academicFocus: "General Studies",
-            transferableCredits: "Update Pending",
-            expectedTransfer: "Fall 2027",
-            eligibilityStatus: "Update Pending",
+            // Prevent accidental duplicate initialization if the page/script is evaluated twice.
+            if (window.__AKIHIRO_PROFILE_INITIALIZED__) return;
+            window.__AKIHIRO_PROFILE_INITIALIZED__ = true;
 
-            youtubeVideo1: "GYwZrTe9pqw",
-            titleVideo1: "2025-26 NJCAA D1 Season Highlights",
-            descVideo1: "Harcum College (PA) · Wide play, 1v1 actions & chance creation.",
+            // =========================================================
+            // ★ PROFILE DATA — update confirmed information here
+            // Transferable Credits / Academic Focus / Eligibility Status
+            // can be updated without changing the page structure.
+            // =========================================================
+            const PROFILE_DATA = {
+                gpa: "GPA 3.28",
+                physicals: "170cm / 68kg",
+                positions: "Wide Defender / Fullback",
+                stats: "7 GP · 1G · 1A",
+                ncaaId: "250663641",
 
-            youtubeVideo2: "mDg81hUIL8k",
-            titleVideo2: "Summer 2026 UPSL Matches (Irvine FC)",
-            descVideo2: "SoCal Premier League · Cutback assists & FK delivery."
-        };
+                academicFocus: "General Studies",
+                transferableCredits: "Update Pending",
+                expectedTransfer: "Fall 2027",
+                eligibilityStatus: "Update Pending",
 
-        const SUPABASE_URL = 'https://cjrabdfdtrufbpjmqddh.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_u0hVckGZrWePM3j1BHDBsQ_YImzJ4D2';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                youtubeVideo1: "GYwZrTe9pqw",
+                titleVideo1: "2025-26 NJCAA D1 Season Highlights",
+                descVideo1: "Harcum College (PA) · Wide play, 1v1 actions & chance creation.",
 
-        const EMAILJS_CONFIG = {
-            publicKey: "KcleHcUHXOYE2a2Hg",
-            serviceId: "service_b5sdwao",
-            templateId: "template_e1lpa08",
-            notificationEmail: "fujiakihiro8@gmail.com"
-        };
-
-        // Initialize EmailJS before any send call.
-        if (window.emailjs) {
-            emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('disp-gpa').innerText = PROFILE_DATA.gpa;
-            document.getElementById('disp-physicals').innerText = PROFILE_DATA.physicals;
-            document.getElementById('disp-positions').innerText = PROFILE_DATA.positions;
-            document.getElementById('disp-stats').innerText = PROFILE_DATA.stats;
-            document.getElementById('disp-ncaa-id').innerText = PROFILE_DATA.ncaaId;
-
-            document.getElementById('disp-academic-focus').innerText = PROFILE_DATA.academicFocus;
-            document.getElementById('disp-transferable-credits').innerText = PROFILE_DATA.transferableCredits;
-            document.getElementById('disp-expected-transfer').innerText = PROFILE_DATA.expectedTransfer;
-            document.getElementById('disp-eligibility-status').innerText = PROFILE_DATA.eligibilityStatus;
-
-            document.getElementById('iframe-primary').src = `https://www.youtube.com/embed/${PROFILE_DATA.youtubeVideo1}`;
-            document.getElementById('link-primary').href = `https://youtu.be/${PROFILE_DATA.youtubeVideo1}`;
-            document.getElementById('title-primary').innerText = PROFILE_DATA.titleVideo1;
-            document.getElementById('desc-primary').innerText = PROFILE_DATA.descVideo1;
-
-            document.getElementById('iframe-secondary').src = `https://www.youtube.com/embed/${PROFILE_DATA.youtubeVideo2}`;
-            document.getElementById('link-secondary').href = `https://www.youtube.com/watch?v=${PROFILE_DATA.youtubeVideo2}`;
-            document.getElementById('title-secondary').innerText = PROFILE_DATA.titleVideo2;
-            document.getElementById('desc-secondary').innerText = PROFILE_DATA.descVideo2;
-        });
-
-        function makeRequestId() {
-            const now = new Date();
-            const stamp = now.toISOString().replace(/[-:.TZ]/g, '').slice(0, 14);
-            const random = Math.random().toString(36).slice(2, 8).toUpperCase();
-            return `AF-${stamp}-${random}`;
-        }
-
-        function showFormMessage(type, message) {
-            const resDiv = document.getElementById('form-response');
-            const styles = {
-                success: 'bg-emerald-900/50 text-emerald-200',
-                warning: 'bg-amber-900/50 text-amber-200',
-                error: 'bg-rose-900/50 text-rose-200',
-                info: 'bg-blue-900/50 text-blue-200'
+                youtubeVideo2: "mDg81hUIL8k",
+                titleVideo2: "Summer 2026 UPSL Matches (Irvine FC)",
+                descVideo2: "SoCal Premier League · Cutback assists & FK delivery."
             };
-            resDiv.className = `text-xs text-center font-bold py-3 px-4 rounded-lg ${styles[type] || styles.info} block`;
-            resDiv.innerText = message;
-        }
 
-        function setSubmitState(disabled, label) {
-            const button = document.querySelector('#contactForm button[type="submit"]');
-            if (!button) return;
-            button.disabled = disabled;
-            button.innerText = label;
-            button.classList.toggle('opacity-60', disabled);
-            button.classList.toggle('cursor-not-allowed', disabled);
-        }
-
-        function getErrorSummary(error) {
-            if (!error) return 'Unknown error';
-            return {
-                message: error.message || String(error),
-                status: error.status,
-                text: error.text,
-                code: error.code,
-                details: error.details,
-                hint: error.hint
+            const SUPABASE_CONFIG = {
+                url: 'https://cjrabdfdtrufbpjmqddh.supabase.co',
+                publishableKey: 'sb_publishable_u0hVckGZrWePM3j1BHDBsQ_YImzJ4D2'
             };
-        }
 
-        async function saveToSupabase({ name, email, type, msg, requestId }) {
-            // Keep the existing table/column contract. No migration is required by this HTML.
-            const archivedMessage = `[Request ID: ${requestId}]\n\n${msg}`;
+            const EMAILJS_CONFIG = {
+                publicKey: "KcleHcUHXOYE2a2Hg",
+                serviceId: "service_b5sdwao",
+                templateId: "template_e1lpa08",
+                notificationEmail: "fujiakihiro8@gmail.com"
+            };
 
-            const { error } = await supabase
-                .from('coach_interactions')
-                .insert([{
-                    coach_id: name,
-                    action_type: type,
-                    message_body: archivedMessage,
-                    contact_email: email
-                }]);
+            let supabaseClient = null;
+            let emailjsReady = false;
 
-            if (error) {
-                console.error('[Supabase] coach_interactions INSERT failed', getErrorSummary(error));
-                throw error;
-            }
-        }
-
-        async function sendEmailNotification({ name, email, type, msg, requestId }) {
-            if (!window.emailjs) {
-                throw new Error('EMAILJS_SDK_NOT_LOADED');
+            function getElement(id) {
+                return document.getElementById(id);
             }
 
-            await emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
-                coach_name: name,
-                coach_email: email,
-                inquiry_type: type,
-                message: msg,
-                request_id: requestId,
-                submitted_at: new Date().toLocaleString('en-US', {
-                    timeZone: 'America/Los_Angeles',
-                    year: 'numeric',
-                    month: 'short',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: true
-                }),
-                player_name: 'Akihiro Fujikawa',
-                player_email: EMAILJS_CONFIG.notificationEmail,
-                reply_to: email,
-                source_url: window.location.href
-            });
-        }
-
-        async function submitMessage(e) {
-            e.preventDefault();
-
-            const form = document.getElementById('contactForm');
-            const name = document.getElementById('coach-name').value.trim();
-            const email = document.getElementById('coach-email').value.trim();
-            const type = document.getElementById('inquiry-type').value;
-            const msg = document.getElementById('coach-message').value.trim();
-            const honeypot = document.getElementById('website')?.value.trim() || '';
-            const requestId = makeRequestId();
-
-            // Quietly absorb obvious bot submissions without sending or storing them.
-            if (honeypot) {
-                showFormMessage('success', 'Thank you. Your message has been received.');
-                form.reset();
-                return;
+            function makeRequestId() {
+                const now = new Date();
+                const stamp = now.toISOString().replace(/[-:.TZ]/g, '').slice(0, 14);
+                const random = Math.random().toString(36).slice(2, 8).toUpperCase();
+                return `AF-${stamp}-${random}`;
             }
 
-            if (!name || !email || !type || !msg) {
-                showFormMessage('error', 'Please complete all required fields.');
-                return;
+            function showFormMessage(type, message) {
+                const resDiv = getElement('form-response');
+                if (!resDiv) return;
+
+                const styles = {
+                    success: 'bg-emerald-900/50 text-emerald-200',
+                    warning: 'bg-amber-900/50 text-amber-200',
+                    error: 'bg-rose-900/50 text-rose-200',
+                    info: 'bg-blue-900/50 text-blue-200'
+                };
+
+                resDiv.className = `text-xs text-center font-bold py-3 px-4 rounded-lg ${styles[type] || styles.info} block`;
+                resDiv.innerText = message;
+                resDiv.setAttribute('role', 'status');
+                resDiv.setAttribute('aria-live', 'polite');
             }
 
-            if (msg.length < 5) {
-                showFormMessage('error', 'Please enter a little more detail in your message.');
-                return;
+            function setSubmitState(disabled, label) {
+                const button = document.querySelector('#contactForm button[type="submit"]');
+                if (!button) return;
+                button.disabled = disabled;
+                button.innerText = label;
+                button.classList.toggle('opacity-60', disabled);
+                button.classList.toggle('cursor-not-allowed', disabled);
             }
 
-            setSubmitState(true, 'Sending...');
-            showFormMessage('info', 'Sending your message...');
-
-            let emailOk = false;
-            let databaseOk = false;
-            let emailError = null;
-            let databaseError = null;
-
-            // Deliver both ways independently so one failure does not prevent the other.
-            const [emailResult, databaseResult] = await Promise.allSettled([
-                sendEmailNotification({ name, email, type, msg, requestId }),
-                saveToSupabase({ name, email, type, msg, requestId })
-            ]);
-
-            if (emailResult.status === 'fulfilled') {
-                emailOk = true;
-            } else {
-                emailError = emailResult.reason;
-                console.error('[Email Notification] failed', getErrorSummary(emailError));
+            function getErrorSummary(error) {
+                if (!error) return 'Unknown error';
+                return {
+                    message: error.message || String(error),
+                    status: error.status,
+                    text: error.text,
+                    code: error.code,
+                    details: error.details,
+                    hint: error.hint
+                };
             }
 
-            if (databaseResult.status === 'fulfilled') {
-                databaseOk = true;
-            } else {
-                databaseError = databaseResult.reason;
+            function initializeSupabase() {
+                if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+                    console.error('[Coach Contact] Supabase SDK is not available.');
+                    return false;
+                }
+
+                try {
+                    supabaseClient = window.supabase.createClient(
+                        SUPABASE_CONFIG.url,
+                        SUPABASE_CONFIG.publishableKey
+                    );
+                    return true;
+                } catch (error) {
+                    console.error('[Coach Contact] Supabase initialization failed', getErrorSummary(error));
+                    supabaseClient = null;
+                    return false;
+                }
             }
 
-            if (emailOk && databaseOk) {
-                showFormMessage('success', '✅ Message received successfully. Akihiro will get back to you shortly.');
-                form.reset();
-            } else if (emailOk && !databaseOk) {
-                showFormMessage('warning', '✅ Your message was sent successfully. The backup record could not be saved automatically.');
-                form.reset();
-                console.error('[Coach Contact] email succeeded but database archive failed', {
-                    requestId,
-                    databaseError: getErrorSummary(databaseError)
+            function initializeEmailJS() {
+                if (!window.emailjs || typeof window.emailjs.init !== 'function') {
+                    console.error('[Coach Contact] EmailJS SDK is not available.');
+                    emailjsReady = false;
+                    return false;
+                }
+
+                try {
+                    window.emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+                    emailjsReady = true;
+                    return true;
+                } catch (error) {
+                    console.error('[Coach Contact] EmailJS initialization failed', getErrorSummary(error));
+                    emailjsReady = false;
+                    return false;
+                }
+            }
+
+            async function saveToSupabase({ name, email, type, msg, requestId }) {
+                if (!supabaseClient) {
+                    throw new Error('SUPABASE_NOT_READY');
+                }
+
+                const archivedMessage = `[Request ID: ${requestId}]\n\n${msg}`;
+
+                const { error } = await supabaseClient
+                    .from('coach_interactions')
+                    .insert([{
+                        coach_id: name,
+                        action_type: type,
+                        message_body: archivedMessage,
+                        contact_email: email
+                    }]);
+
+                if (error) {
+                    console.error('[Supabase] coach_interactions INSERT failed', getErrorSummary(error));
+                    throw error;
+                }
+            }
+
+            async function sendEmailNotification({ name, email, type, msg, requestId }) {
+                if (!emailjsReady || !window.emailjs) {
+                    throw new Error('EMAILJS_NOT_READY');
+                }
+
+                await window.emailjs.send(
+                    EMAILJS_CONFIG.serviceId,
+                    EMAILJS_CONFIG.templateId,
+                    {
+                        coach_name: name,
+                        coach_email: email,
+                        inquiry_type: type,
+                        message: msg,
+                        request_id: requestId,
+                        submitted_at: new Date().toLocaleString('en-US', {
+                            timeZone: 'America/Los_Angeles',
+                            year: 'numeric',
+                            month: 'short',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: true
+                        }),
+                        player_name: 'Akihiro Fujikawa',
+                        player_email: EMAILJS_CONFIG.notificationEmail,
+                        reply_to: email,
+                        source_url: window.location.href
+                    }
+                );
+            }
+
+            async function handleContactSubmit(event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                const form = getElement('contactForm');
+                if (!form || form.dataset.sending === 'true') return;
+
+                const name = getElement('coach-name')?.value.trim() || '';
+                const email = getElement('coach-email')?.value.trim() || '';
+                const type = getElement('inquiry-type')?.value || '';
+                const msg = getElement('coach-message')?.value.trim() || '';
+                const honeypot = getElement('website')?.value.trim() || '';
+                const requestId = makeRequestId();
+
+                if (honeypot) {
+                    showFormMessage('success', 'Thank you. Your message has been received.');
+                    form.reset();
+                    return;
+                }
+
+                if (!name || !email || !type || !msg) {
+                    showFormMessage('error', 'Please complete all required fields.');
+                    return;
+                }
+
+                if (!getElement('coach-email').checkValidity()) {
+                    showFormMessage('error', 'Please enter a valid email address.');
+                    return;
+                }
+
+                if (msg.length < 5) {
+                    showFormMessage('error', 'Please enter a little more detail in your message.');
+                    return;
+                }
+
+                form.dataset.sending = 'true';
+                setSubmitState(true, 'Sending...');
+                showFormMessage('info', 'Sending your message...');
+
+                let emailOk = false;
+                let databaseOk = false;
+                let emailError = null;
+                let databaseError = null;
+
+                try {
+                    const [emailResult, databaseResult] = await Promise.allSettled([
+                        sendEmailNotification({ name, email, type, msg, requestId }),
+                        saveToSupabase({ name, email, type, msg, requestId })
+                    ]);
+
+                    if (emailResult.status === 'fulfilled') {
+                        emailOk = true;
+                    } else {
+                        emailError = emailResult.reason;
+                        console.error('[Email Notification] failed', getErrorSummary(emailError));
+                    }
+
+                    if (databaseResult.status === 'fulfilled') {
+                        databaseOk = true;
+                    } else {
+                        databaseError = databaseResult.reason;
+                        console.error('[Coach Contact] database archive failed', getErrorSummary(databaseError));
+                    }
+
+                    if (emailOk && databaseOk) {
+                        showFormMessage('success', '✅ Message received successfully. Akihiro will get back to you shortly.');
+                        form.reset();
+                    } else if (emailOk && !databaseOk) {
+                        showFormMessage('warning', '✅ Your message was sent successfully. The backup record could not be saved automatically.');
+                        form.reset();
+                    } else if (!emailOk && databaseOk) {
+                        showFormMessage('warning', '✅ Your message was recorded, but email notification failed. Please email Akihiro directly for urgent inquiries.');
+                        form.reset();
+                    } else {
+                        showFormMessage('error', '⚠️ We could not complete the message submission. Please email Akihiro directly at fujiakihiro8@gmail.com.');
+                    }
+
+                    console.info('[Coach Contact] submission result', {
+                        requestId,
+                        emailOk,
+                        databaseOk,
+                        emailError: getErrorSummary(emailError),
+                        databaseError: getErrorSummary(databaseError)
+                    });
+                } catch (error) {
+                    console.error('[Coach Contact] unexpected submission error', getErrorSummary(error));
+                    showFormMessage('error', '⚠️ We could not complete the message submission. Please email Akihiro directly at fujiakihiro8@gmail.com.');
+                } finally {
+                    form.dataset.sending = 'false';
+                    setSubmitState(false, 'Send Message');
+                }
+            }
+
+            function renderProfile() {
+                const mapping = {
+                    'disp-gpa': PROFILE_DATA.gpa,
+                    'disp-physicals': PROFILE_DATA.physicals,
+                    'disp-positions': PROFILE_DATA.positions,
+                    'disp-stats': PROFILE_DATA.stats,
+                    'disp-ncaa-id': PROFILE_DATA.ncaaId,
+                    'disp-academic-focus': PROFILE_DATA.academicFocus,
+                    'disp-transferable-credits': PROFILE_DATA.transferableCredits,
+                    'disp-expected-transfer': PROFILE_DATA.expectedTransfer,
+                    'disp-eligibility-status': PROFILE_DATA.eligibilityStatus
+                };
+
+                Object.entries(mapping).forEach(([id, value]) => {
+                    const el = getElement(id);
+                    if (el) el.innerText = value;
                 });
-            } else if (!emailOk && databaseOk) {
-                showFormMessage('warning', '✅ Your message was recorded, but email notification failed. Please email Akihiro directly for urgent inquiries.');
-                form.reset();
-                console.error('[Coach Contact] database archive succeeded but email notification failed', {
-                    requestId,
-                    emailError: getErrorSummary(emailError)
-                });
-            } else {
-                showFormMessage('error', '⚠️ We could not complete the message submission. Please email Akihiro directly at fujiakihiro8@gmail.com.');
-                console.error('[Coach Contact] both delivery paths failed', {
-                    requestId,
-                    emailError: getErrorSummary(emailError),
-                    databaseError: getErrorSummary(databaseError)
+
+                const primary = {
+                    frame: getElement('iframe-primary'),
+                    link: getElement('link-primary'),
+                    title: getElement('title-primary'),
+                    desc: getElement('desc-primary'),
+                    id: PROFILE_DATA.youtubeVideo1,
+                    titleText: PROFILE_DATA.titleVideo1,
+                    descText: PROFILE_DATA.descVideo1
+                };
+                if (primary.frame) primary.frame.src = `https://www.youtube.com/embed/${primary.id}`;
+                if (primary.link) primary.link.href = `https://youtu.be/${primary.id}`;
+                if (primary.title) primary.title.innerText = primary.titleText;
+                if (primary.desc) primary.desc.innerText = primary.descText;
+
+                const secondary = {
+                    frame: getElement('iframe-secondary'),
+                    link: getElement('link-secondary'),
+                    title: getElement('title-secondary'),
+                    desc: getElement('desc-secondary'),
+                    id: PROFILE_DATA.youtubeVideo2,
+                    titleText: PROFILE_DATA.titleVideo2,
+                    descText: PROFILE_DATA.descVideo2
+                };
+                if (secondary.frame) secondary.frame.src = `https://www.youtube.com/embed/${secondary.id}`;
+                if (secondary.link) secondary.link.href = `https://www.youtube.com/watch?v=${secondary.id}`;
+                if (secondary.title) secondary.title.innerText = secondary.titleText;
+                if (secondary.desc) secondary.desc.innerText = secondary.descText;
+            }
+
+            function setupFullMatchLinks() {
+                const links = document.querySelectorAll('a[href="#contact-form"]');
+                links.forEach((link) => {
+                    link.addEventListener('click', () => {
+                        window.setTimeout(() => {
+                            const select = getElement('inquiry-type');
+                            if (select) select.value = 'Full Match Film Request';
+                        }, 0);
+                    });
                 });
             }
 
-            setSubmitState(false, 'Send Message');
-        }
+            function setupContactForm() {
+                const form = getElement('contactForm');
+                if (!form) return;
+
+                form.addEventListener('submit', handleContactSubmit);
+            }
+
+            function initialize() {
+                renderProfile();
+                initializeSupabase();
+                initializeEmailJS();
+                setupFullMatchLinks();
+                setupContactForm();
+
+                // Lightweight runtime diagnostics for troubleshooting from DevTools.
+                window.__AKIHIRO_CONTACT__ = {
+                    initialized: true,
+                    emailjsLoaded: Boolean(window.emailjs),
+                    emailjsReady,
+                    supabaseLoaded: Boolean(window.supabase),
+                    supabaseReady: Boolean(supabaseClient),
+                    formBound: Boolean(getElement('contactForm'))
+                };
+
+                console.info('[Coach Contact] initialized', window.__AKIHIRO_CONTACT__);
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initialize, { once: true });
+            } else {
+                initialize();
+            }
+        })();
     </script>
 </body>
 </html>

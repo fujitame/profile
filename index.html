@@ -21,22 +21,22 @@
                 <div class="w-32 h-44 sm:w-36 sm:h-48 md:w-44 md:h-60 flex-shrink-0 rounded-xl overflow-hidden border border-amber-500/40 shadow-lg relative">
                     <img src="Akihiro_Harcum.png" alt="Akihiro Fujikawa" class="w-full h-full object-cover object-top" fetchpriority="high">
                     <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent p-2 text-center">
-                        <span class="text-[10px] font-black text-amber-400 uppercase tracking-widest block">NJCAA D1 #14</span>
+                        <span id="disp-photo-badge" class="text-[10px] font-black text-amber-400 uppercase tracking-widest block">NJCAA D1 #14</span>
                     </div>
                 </div>
 
                 <!-- Essential identity -->
                 <div class="flex flex-col justify-between flex-grow w-full text-center md:text-left">
                     <div>
-                        <div class="inline-block px-3 py-1 bg-amber-500/15 text-amber-400 border border-amber-500/25 rounded-full text-[11px] sm:text-xs font-bold mb-2">
+                        <div id="disp-transfer-target" class="inline-block px-3 py-1 bg-amber-500/15 text-amber-400 border border-amber-500/25 rounded-full text-[11px] sm:text-xs font-bold mb-2">
                             NCAA Transfer Candidate · Fall 2027
                         </div>
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">AKIHIRO FUJIKAWA</h1>
+                        <h1 id="disp-player-name" class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">AKIHIRO FUJIKAWA</h1>
                         <p class="text-slate-200 text-sm sm:text-base font-semibold mt-2">
-                            Wide Defender / Fullback · Harcum College (PA)
+                            <span id="disp-hero-role">Wide Defender / Fullback</span> · <span id="disp-current-school">Harcum College (PA)</span>
                         </p>
                         <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-                            Sophomore · NJCAA D1 · #14 · Right-footed · 170 cm / 68 kg · GPA 3.28
+                            <span id="disp-class-year">Sophomore</span> · <span id="disp-current-division">NJCAA D1</span> · #<span id="disp-jersey-number">14</span> · <span id="disp-preferred-foot">Right-footed</span> · <span id="disp-height-weight">170 cm / 68 kg</span> · <span id="disp-hero-gpa">GPA 3.29</span>
                         </p>
                         <p class="text-slate-500 text-[11px] mt-1">
                             NCAA ID: <span id="disp-ncaa-id" class="text-slate-300 font-mono">250663641</span>
@@ -48,14 +48,14 @@
                         <a href="#highlights" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg text-sm transition shadow-md text-center">
                             Watch Highlights
                         </a>
-                        <a href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-sm transition shadow-md text-center">
+                        <a id="hero-email-link" href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-sm transition shadow-md text-center">
                             Email Player
                         </a>
                         <a href="#contact-form" onclick="setTimeout(() => { const el = document.getElementById('inquiry-type'); if (el) el.value = 'Full Match Film Request'; }, 0)" class="col-span-2 md:col-span-1 px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg text-sm transition shadow-md text-center">
                             Request Full Match
                         </a>
                     </div>
-                    <a href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center md:justify-start gap-1.5 text-slate-500 hover:text-amber-400 transition text-xs font-semibold mt-3">
+                    <a id="player-instagram-link" href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center md:justify-start gap-1.5 text-slate-500 hover:text-amber-400 transition text-xs font-semibold mt-3">
                         Instagram · @a93914
                     </a>
                 </div>
@@ -69,21 +69,21 @@
         <section class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4" aria-label="Player snapshot">
             <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
                 <span class="text-[11px] text-slate-400 font-medium block">Academic</span>
-                <span id="disp-gpa" class="text-xl sm:text-2xl font-bold text-amber-400 block mt-0.5">GPA 3.28</span>
+                <span id="disp-gpa" class="text-xl sm:text-2xl font-bold text-amber-400 block mt-0.5">GPA 3.29</span>
                 <span class="text-[10px] text-slate-500 block mt-1">Harcum & OCC coursework</span>
             </div>
             <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
                 <span class="text-[11px] text-slate-400 font-medium block">Physicals</span>
-                <span id="disp-physicals" class="text-lg sm:text-xl font-bold text-slate-100 block mt-0.5">170cm / 68kg</span>
-                <span class="text-[10px] text-slate-500 block mt-1">5'7" / 150 lbs · Right foot</span>
+                <span id="disp-physicals" class="text-lg sm:text-xl font-bold text-slate-100 block mt-0.5">170 cm / 68 kg</span>
+                <span id="disp-foot" class="text-[10px] text-slate-500 block mt-1">Right foot</span>
             </div>
             <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
                 <span class="text-[11px] text-slate-400 font-medium block">Primary Role</span>
                 <span id="disp-positions" class="text-base sm:text-lg font-bold text-slate-100 block mt-0.5">Wide Defender / Fullback</span>
-                <span class="text-[10px] text-slate-500 block mt-1">Secondary: LM / LW</span>
+                <span id="disp-secondary-positions" class="text-[10px] text-slate-500 block mt-1">Secondary: LM / LW</span>
             </div>
             <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
-                <span class="text-[11px] text-slate-400 font-medium block">2025-26 NJCAA D1</span>
+                <span id="disp-season-label" class="text-[11px] text-slate-400 font-medium block">2025-26 NJCAA D1</span>
                 <span id="disp-stats" class="text-lg sm:text-xl font-bold text-slate-100 block mt-0.5">7 GP · 1G · 1A</span>
                 <span class="text-[10px] text-slate-500 block mt-1">Official freshman season</span>
             </div>
@@ -213,12 +213,12 @@
         <section class="bg-slate-900/70 p-5 sm:p-6 rounded-xl border border-slate-800 space-y-3">
             <div class="flex flex-wrap items-center justify-between gap-2">
                 <h2 class="text-sm font-bold text-amber-400 uppercase tracking-wider">Independent D1 Evaluation</h2>
-                <span class="text-[10px] text-slate-500 uppercase tracking-wider">El Camino Combine</span>
+                <span id="disp-evaluation-event" class="text-[10px] text-slate-500 uppercase tracking-wider">El Camino Combine</span>
             </div>
-            <blockquote class="text-sm italic text-slate-300 border-l-2 border-amber-500 pl-4 py-1">
+            <blockquote id="disp-evaluation-quote" class="text-sm italic text-slate-300 border-l-2 border-amber-500 pl-4 py-1">
                 "Possesses good technical ability with the ball at feet. A possession-oriented playing program suits your skill best."
             </blockquote>
-            <p class="text-xs text-slate-400">— Chris Volk, Assistant Men's Soccer Coach, UC Riverside</p>
+            <p id="disp-evaluation-credit" class="text-xs text-slate-400">— Chris Volk, Assistant Men's Soccer Coach, UC Riverside</p>
         </section>
 
         <!-- COACH CONTACT -->
@@ -229,7 +229,7 @@
                         <h2 class="text-2xl font-bold text-white">Coach Contact</h2>
                         <p class="text-xs text-slate-400 mt-1.5">For recruiting inquiries, full-match requests, roster questions, or a call with Akihiro.</p>
                     </div>
-                    <a href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="inline-flex items-center justify-center px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-lg text-xs font-black transition">
+                    <a id="player-email-link" href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="inline-flex items-center justify-center px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-lg text-xs font-black transition">
                         fujiakihiro8@gmail.com
                     </a>
                 </div>
@@ -274,8 +274,8 @@
     </main>
 
     <footer class="max-w-5xl mx-auto py-7 px-4 text-center text-xs text-slate-500 border-t border-slate-800 space-y-2">
-        <a href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-400 transition font-semibold">Instagram · @a93914</a>
-        <p>© 2026 Akihiro Fujikawa Recruitment Profile · Direct Contact: fujiakihiro8@gmail.com</p>
+        <a id="footer-instagram-link" href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-400 transition font-semibold">Instagram · @a93914</a>
+        <p>© 2026 Akihiro Fujikawa Recruitment Profile · Direct Contact: <span id="footer-player-email">fujiakihiro8@gmail.com</span></p>
         <p class="text-[10px] text-slate-600">Transferable Credits / Academic Pathway / Eligibility Status — Update Pending</p>
     </footer>
 
@@ -292,11 +292,27 @@
             // Transferable Credits / Academic Focus / Eligibility Status
             // can be updated without changing the page structure.
             // =========================================================
+            const PLAYER_MASTER_ID = 'akihiro-fujikawa';
+            const PLAYER_MASTER_VIEW = 'public_player_profile';
+
+            // Fallback values keep the coach-facing page usable if the public view is temporarily unavailable.
+            // Live values are loaded from Supabase after the initial render.
             const PROFILE_DATA = {
-                gpa: "GPA 3.28",
-                physicals: "170cm / 68kg",
-                positions: "Wide Defender / Fullback",
-                stats: "7 GP · 1G · 1A",
+                playerName: "Akihiro Fujikawa",
+                currentSchool: "Harcum College (PA)",
+                currentDivision: "NJCAA D1",
+                classYear: "Sophomore",
+                jerseyNumber: "14",
+                primaryPosition: "Wide Defender / Fullback",
+                secondaryPositions: "LM / LW",
+                preferredFoot: "Right-footed",
+                heightCm: 170,
+                weightKg: 68,
+                gpa: 3.29,
+                seasonLabel: "2025-26 NJCAA D1",
+                appearances: 7,
+                goals: 1,
+                assists: 1,
                 ncaaId: "250663641",
 
                 academicFocus: "General Studies",
@@ -310,7 +326,17 @@
 
                 youtubeVideo2: "mDg81hUIL8k",
                 titleVideo2: "Summer 2026 UPSL Matches (Irvine FC)",
-                descVideo2: "UPSL Premier League SoCal · Cutback assists & FK delivery."
+                descVideo2: "UPSL Premier League SoCal · Cutback assists & FK delivery.",
+
+                evaluationQuote: "Possesses good technical ability with the ball at feet. A possession-oriented playing program suits your skill best.",
+                evaluationName: "Chris Volk",
+                evaluationRole: "Assistant Men's Soccer Coach",
+                evaluationSchool: "UC Riverside",
+                evaluationEvent: "El Camino Combine",
+
+                playerEmail: "fujiakihiro8@gmail.com",
+                instagramHandle: "a93914",
+                updatedAt: null
             };
 
             const SUPABASE_CONFIG = {
@@ -560,23 +586,89 @@
                 }
             }
 
+            function formatGpa(value) {
+                if (value === null || value === undefined || value === '') return 'GPA —';
+                const numeric = Number(value);
+                return Number.isFinite(numeric) ? 'GPA ' + numeric.toFixed(2) : 'GPA ' + String(value);
+            }
+
+            function formatStats(data) {
+                const appearances = Number(data.appearances);
+                const goals = Number(data.goals);
+                const assists = Number(data.assists);
+                const safe = (value) => Number.isFinite(value) ? value : '—';
+                return safe(appearances) + ' GP · ' + safe(goals) + 'G · ' + safe(assists) + 'A';
+            }
+
+            function normalizeHandle(value) {
+                return String(value || '').replace(/^@/, '').trim();
+            }
+
+            function setMailtoLink(elementId, email) {
+                const el = getElement(elementId);
+                if (!el) return;
+                const safeEmail = String(email || '').trim();
+                if (!safeEmail) return;
+                el.href = 'mailto:' + encodeURIComponent(safeEmail) + '?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry';
+                if (elementId === 'player-email-link' || elementId === 'footer-player-email') {
+                    el.innerText = safeEmail;
+                }
+            }
+
+            function setInstagramLink(elementId, handle) {
+                const el = getElement(elementId);
+                if (!el) return;
+                const normalized = normalizeHandle(handle);
+                if (!normalized) return;
+                el.href = 'https://www.instagram.com/' + encodeURIComponent(normalized) + '/';
+                el.innerText = 'Instagram · @' + normalized;
+            }
+
             function renderProfile() {
+                const heroGpa = formatGpa(PROFILE_DATA.gpa);
+                const physicals = (PROFILE_DATA.heightCm ?? '—') + ' cm / ' + (PROFILE_DATA.weightKg ?? '—') + ' kg';
+                const jersey = PROFILE_DATA.jerseyNumber ?? '—';
+                const division = PROFILE_DATA.currentDivision || '—';
+
                 const mapping = {
-                    'disp-gpa': PROFILE_DATA.gpa,
-                    'disp-physicals': PROFILE_DATA.physicals,
-                    'disp-positions': PROFILE_DATA.positions,
-                    'disp-stats': PROFILE_DATA.stats,
+                    'disp-photo-badge': division + ' #' + jersey,
+                    'disp-player-name': PROFILE_DATA.playerName,
+                    'disp-transfer-target': 'NCAA Transfer Candidate · ' + (PROFILE_DATA.expectedTransfer || 'Update Pending'),
+                    'disp-hero-role': PROFILE_DATA.primaryPosition,
+                    'disp-current-school': PROFILE_DATA.currentSchool,
+                    'disp-class-year': PROFILE_DATA.classYear,
+                    'disp-current-division': division,
+                    'disp-jersey-number': jersey,
+                    'disp-preferred-foot': PROFILE_DATA.preferredFoot,
+                    'disp-height-weight': physicals,
+                    'disp-hero-gpa': heroGpa,
+                    'disp-gpa': heroGpa,
+                    'disp-physicals': physicals,
+                    'disp-foot': PROFILE_DATA.preferredFoot === 'Right-footed' ? 'Right foot' : PROFILE_DATA.preferredFoot,
+                    'disp-positions': PROFILE_DATA.primaryPosition,
+                    'disp-secondary-positions': 'Secondary: ' + (PROFILE_DATA.secondaryPositions || 'Update Pending'),
+                    'disp-season-label': PROFILE_DATA.seasonLabel || 'Season',
+                    'disp-stats': formatStats(PROFILE_DATA),
                     'disp-ncaa-id': PROFILE_DATA.ncaaId,
                     'disp-academic-focus': PROFILE_DATA.academicFocus,
                     'disp-transferable-credits': PROFILE_DATA.transferableCredits,
                     'disp-expected-transfer': PROFILE_DATA.expectedTransfer,
-                    'disp-eligibility-status': PROFILE_DATA.eligibilityStatus
+                    'disp-eligibility-status': PROFILE_DATA.eligibilityStatus,
+                    'disp-evaluation-quote': '"' + (PROFILE_DATA.evaluationQuote || '') + '"',
+                    'disp-evaluation-credit': '— ' + (PROFILE_DATA.evaluationName || '') + ', ' + (PROFILE_DATA.evaluationRole || '') + ', ' + (PROFILE_DATA.evaluationSchool || ''),
+                    'disp-evaluation-event': PROFILE_DATA.evaluationEvent || '—'
                 };
 
                 Object.entries(mapping).forEach(([id, value]) => {
                     const el = getElement(id);
                     if (el) el.innerText = value;
                 });
+
+                setMailtoLink('hero-email-link', PROFILE_DATA.playerEmail);
+                setMailtoLink('player-email-link', PROFILE_DATA.playerEmail);
+                setMailtoLink('footer-player-email', PROFILE_DATA.playerEmail);
+                setInstagramLink('player-instagram-link', PROFILE_DATA.instagramHandle);
+                setInstagramLink('footer-instagram-link', PROFILE_DATA.instagramHandle);
 
                 const primary = {
                     frame: getElement('iframe-primary'),
@@ -619,6 +711,109 @@
                 });
             }
 
+            async function loadPlayerProfile() {
+                if (!supabaseClient) {
+                    console.warn('[Player Master] Supabase is not available; using fallback profile data.');
+                    return false;
+                }
+
+                const publicColumns = [
+                    'id',
+                    'player_name',
+                    'current_school',
+                    'current_division',
+                    'class_year',
+                    'jersey_number',
+                    'primary_position',
+                    'secondary_positions',
+                    'preferred_foot',
+                    'height_cm',
+                    'weight_kg',
+                    'gpa',
+                    'season_label',
+                    'appearances',
+                    'goals',
+                    'assists',
+                    'ncaa_id',
+                    'academic_focus',
+                    'transferable_credits_status',
+                    'expected_transfer',
+                    'eligibility_status',
+                    'highlight_video_1_id',
+                    'highlight_video_1_title',
+                    'highlight_video_1_description',
+                    'highlight_video_2_id',
+                    'highlight_video_2_title',
+                    'highlight_video_2_description',
+                    'independent_evaluation_quote',
+                    'independent_evaluation_name',
+                    'independent_evaluation_role',
+                    'independent_evaluation_school',
+                    'independent_evaluation_event',
+                    'player_email',
+                    'instagram_handle',
+                    'updated_at'
+                ].join(',');
+
+                const { data, error } = await supabaseClient
+                    .from(PLAYER_MASTER_VIEW)
+                    .select(publicColumns)
+                    .eq('id', PLAYER_MASTER_ID)
+                    .maybeSingle();
+
+                if (error) {
+                    console.warn('[Player Master] public view read failed; using fallback profile data.', getErrorSummary(error));
+                    return false;
+                }
+
+                if (!data) {
+                    console.warn('[Player Master] no profile row returned; using fallback profile data.');
+                    return false;
+                }
+
+                PROFILE_DATA.playerName = data.player_name ?? PROFILE_DATA.playerName;
+                PROFILE_DATA.currentSchool = data.current_school ?? PROFILE_DATA.currentSchool;
+                PROFILE_DATA.currentDivision = data.current_division ?? PROFILE_DATA.currentDivision;
+                PROFILE_DATA.classYear = data.class_year ?? PROFILE_DATA.classYear;
+                PROFILE_DATA.jerseyNumber = data.jersey_number ?? PROFILE_DATA.jerseyNumber;
+                PROFILE_DATA.primaryPosition = data.primary_position ?? PROFILE_DATA.primaryPosition;
+                PROFILE_DATA.secondaryPositions = data.secondary_positions ?? PROFILE_DATA.secondaryPositions;
+                PROFILE_DATA.preferredFoot = data.preferred_foot ?? PROFILE_DATA.preferredFoot;
+                PROFILE_DATA.heightCm = data.height_cm ?? PROFILE_DATA.heightCm;
+                PROFILE_DATA.weightKg = data.weight_kg ?? PROFILE_DATA.weightKg;
+                PROFILE_DATA.gpa = data.gpa ?? PROFILE_DATA.gpa;
+                PROFILE_DATA.seasonLabel = data.season_label ?? PROFILE_DATA.seasonLabel;
+                PROFILE_DATA.appearances = data.appearances ?? PROFILE_DATA.appearances;
+                PROFILE_DATA.goals = data.goals ?? PROFILE_DATA.goals;
+                PROFILE_DATA.assists = data.assists ?? PROFILE_DATA.assists;
+                PROFILE_DATA.ncaaId = data.ncaa_id ?? PROFILE_DATA.ncaaId;
+                PROFILE_DATA.academicFocus = data.academic_focus ?? PROFILE_DATA.academicFocus;
+                PROFILE_DATA.transferableCredits = data.transferable_credits_status ?? PROFILE_DATA.transferableCredits;
+                PROFILE_DATA.expectedTransfer = data.expected_transfer ?? PROFILE_DATA.expectedTransfer;
+                PROFILE_DATA.eligibilityStatus = data.eligibility_status ?? PROFILE_DATA.eligibilityStatus;
+                PROFILE_DATA.youtubeVideo1 = data.highlight_video_1_id ?? PROFILE_DATA.youtubeVideo1;
+                PROFILE_DATA.titleVideo1 = data.highlight_video_1_title ?? PROFILE_DATA.titleVideo1;
+                PROFILE_DATA.descVideo1 = data.highlight_video_1_description ?? PROFILE_DATA.descVideo1;
+                PROFILE_DATA.youtubeVideo2 = data.highlight_video_2_id ?? PROFILE_DATA.youtubeVideo2;
+                PROFILE_DATA.titleVideo2 = data.highlight_video_2_title ?? PROFILE_DATA.titleVideo2;
+                PROFILE_DATA.descVideo2 = data.highlight_video_2_description ?? PROFILE_DATA.descVideo2;
+                PROFILE_DATA.evaluationQuote = data.independent_evaluation_quote ?? PROFILE_DATA.evaluationQuote;
+                PROFILE_DATA.evaluationName = data.independent_evaluation_name ?? PROFILE_DATA.evaluationName;
+                PROFILE_DATA.evaluationRole = data.independent_evaluation_role ?? PROFILE_DATA.evaluationRole;
+                PROFILE_DATA.evaluationSchool = data.independent_evaluation_school ?? PROFILE_DATA.evaluationSchool;
+                PROFILE_DATA.evaluationEvent = data.independent_evaluation_event ?? PROFILE_DATA.evaluationEvent;
+                PROFILE_DATA.playerEmail = data.player_email ?? PROFILE_DATA.playerEmail;
+                PROFILE_DATA.instagramHandle = data.instagram_handle ?? PROFILE_DATA.instagramHandle;
+                PROFILE_DATA.updatedAt = data.updated_at ?? PROFILE_DATA.updatedAt;
+
+                renderProfile();
+                console.info('[Player Master] Profile synced from public_player_profile', {
+                    id: PLAYER_MASTER_ID,
+                    updatedAt: PROFILE_DATA.updatedAt
+                });
+                return true;
+            }
+
             function setupContactForm() {
                 const form = getElement('contactForm');
                 if (!form) return;
@@ -627,10 +822,11 @@
             }
 
             function initialize() {
-                renderProfile();
                 initializeSupabase();
                 initializeEmailJS();
                 setupFullMatchLinks();
+                renderProfile();
+                loadPlayerProfile();
                 setupContactForm();
 
                 // Lightweight runtime diagnostics for troubleshooting from DevTools.

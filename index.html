@@ -445,21 +445,24 @@
                     throw new Error('SUPABASE_NOT_READY');
                 }
 
-                const archivedMessage = `[Request ID: ${requestId}]\n\n${msg}`;
-
-                const { error } = await supabaseClient
-                    .from('coach_interactions')
-                    .insert([{
-                        coach_id: name,
-                        action_type: type,
-                        message_body: archivedMessage,
-                        contact_email: email
-                    }]);
+                const { data, error } = await supabaseClient.rpc('submit_recruiting_inquiry', {
+                    p_request_id: requestId,
+                    p_coach_name: name,
+                    p_coach_email: email,
+                    p_inquiry_type: type,
+                    p_message: msg,
+                    p_source_url: window.location.href
+                });
 
                 if (error) {
-                    console.error('[Supabase] coach_interactions INSERT failed', getErrorSummary(error));
+                    console.error('[Supabase] submit_recruiting_inquiry RPC failed', getErrorSummary(error));
                     throw error;
                 }
+
+                console.info('[Coach Contact] inbound lead saved', {
+                    requestId,
+                    inboundLeadId: data
+                });
             }
 
             async function sendEmailNotification({ name, email, type, msg, requestId }) {

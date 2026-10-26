@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- EmailJS SDK: sends coach inquiry notifications to the configured Gmail service -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <meta name="referrer" content="no-referrer">
+    <script src="email-engagement.js" defer></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen">
 
@@ -685,7 +687,7 @@
                     titleText: PROFILE_DATA.titleVideo1,
                     descText: PROFILE_DATA.descVideo1
                 };
-                if (primary.frame) primary.frame.src = `https://www.youtube.com/embed/${primary.id}`;
+                if (primary.frame) { const src=`https://www.youtube.com/embed/${primary.id}?enablejsapi=1&autoplay=0&playsinline=1&origin=${encodeURIComponent(location.origin)}`; if(primary.frame.src!==src)primary.frame.src=src; }
                 if (primary.link) primary.link.href = `https://youtu.be/${primary.id}`;
                 if (primary.title) primary.title.innerText = primary.titleText;
                 if (primary.desc) primary.desc.innerText = primary.descText;
@@ -699,7 +701,7 @@
                     titleText: PROFILE_DATA.titleVideo2,
                     descText: PROFILE_DATA.descVideo2
                 };
-                if (secondary.frame) secondary.frame.src = `https://www.youtube.com/embed/${secondary.id}`;
+                if (secondary.frame) { const src=`https://www.youtube.com/embed/${secondary.id}?enablejsapi=1&autoplay=0&playsinline=1&origin=${encodeURIComponent(location.origin)}`; if(secondary.frame.src!==src)secondary.frame.src=src; }
                 if (secondary.link) secondary.link.href = `https://www.youtube.com/watch?v=${secondary.id}`;
                 if (secondary.title) secondary.title.innerText = secondary.titleText;
                 if (secondary.desc) secondary.desc.innerText = secondary.descText;

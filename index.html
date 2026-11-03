@@ -56,8 +56,8 @@
                         <a id="hero-email-link" href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-sm transition shadow-md text-center">
                             Email Player
                         </a>
-                        <a href="#contact-form" onclick="setTimeout(() => { const el = document.getElementById('inquiry-type'); if (el) el.value = 'Full Match Film Request'; }, 0)" class="col-span-2 md:col-span-1 px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg text-sm transition shadow-md text-center">
-                            Request Full Match
+                        <a href="#contact-form" onclick="setTimeout(() => { const el = document.getElementById('inquiry-type'); if (el) el.value = 'Match Footage Request'; }, 0)" class="col-span-2 md:col-span-1 px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg text-sm transition shadow-md text-center">
+                            Request Match Footage
                         </a>
                     </div>
                     <a id="player-instagram-link" href="https://www.instagram.com/a93914/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center md:justify-start gap-1.5 text-slate-500 hover:text-amber-400 transition text-xs font-semibold mt-3">
@@ -80,6 +80,7 @@
             <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
                 <span class="text-[11px] text-slate-400 font-medium block">Physicals</span>
                 <span id="disp-physicals" class="text-lg sm:text-xl font-bold text-slate-100 block mt-0.5">170 cm / 68 kg</span>
+                <span id="disp-physicals-imperial" class="text-sm font-semibold text-slate-300 block mt-0.5">5′7″ / 150 lbs</span>
                 <span id="disp-foot" class="text-[10px] text-slate-500 block mt-1">Right foot</span>
             </div>
             <div class="bg-slate-900/80 p-3.5 sm:p-4 rounded-xl border border-slate-800">
@@ -166,11 +167,11 @@
 
             <div class="bg-blue-500/5 rounded-xl border border-blue-500/20 px-4 sm:px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
-                    <h3 class="font-bold text-sm text-white">Full Match Film</h3>
-                    <p class="text-xs text-slate-400 mt-1">Full-match footage is available to college coaches upon request.</p>
+                    <h3 class="font-bold text-sm text-white">Match Footage</h3>
+                    <p class="text-xs text-slate-400 mt-1">Match footage, including half-match appearances, is available to college coaches upon request.</p>
                 </div>
                 <a href="#contact-form" class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition">
-                    Request Full Match
+                    Request Match Footage
                 </a>
             </div>
         </section>
@@ -232,7 +233,7 @@
                 <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
                     <div>
                         <h2 class="text-2xl font-bold text-white">Coach Contact</h2>
-                        <p class="text-xs text-slate-400 mt-1.5">For recruiting inquiries, full-match requests, roster questions, or a call with Akihiro.</p>
+                        <p class="text-xs text-slate-400 mt-1.5">For recruiting inquiries, match footage requests, roster questions, or a call with Akihiro.</p>
                     </div>
                     <a id="player-email-link" href="mailto:fujiakihiro8@gmail.com?subject=Akihiro%20Fujikawa%20Recruiting%20Inquiry" class="inline-flex items-center justify-center px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-lg text-xs font-black transition">
                         fujiakihiro8@gmail.com
@@ -254,7 +255,7 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1.5">Inquiry Type</label>
                     <select id="inquiry-type" name="inquiry_type" class="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-white focus:outline-none focus:border-blue-500">
-                        <option value="Full Match Film Request">Request Full Match Video</option>
+                        <option value="Match Footage Request">Request Match Footage Video</option>
                         <option value="Call / Campus Visit">Schedule Call / Campus Visit</option>
                         <option value="Scholarship & Roster Status">Scholarship & Roster Inquiry</option>
                         <option value="General Message">General Message</option>
@@ -632,6 +633,12 @@
                 el.innerText = 'Instagram · @' + normalized;
             }
 
+            function formatImperialPhysicals(heightCm, weightKg) {
+                const inches = heightCm !== null && heightCm !== '' && Number(heightCm) > 0 ? Math.round(Number(heightCm) / 2.54) : null;
+                const pounds = weightKg !== null && weightKg !== '' && Number(weightKg) > 0 ? Math.round(Number(weightKg) / 0.45359237) : null;
+                return (inches === null ? '—' : Math.floor(inches / 12) + '′' + (inches % 12) + '″') + ' / ' + (pounds === null ? '—' : pounds + ' lbs');
+            }
+
             function renderProfile() {
                 const heroGpa = formatGpa(PROFILE_DATA.gpa);
                 const physicals = (PROFILE_DATA.heightCm ?? '—') + ' cm / ' + (PROFILE_DATA.weightKg ?? '—') + ' kg';
@@ -652,6 +659,7 @@
                     'disp-hero-gpa': heroGpa,
                     'disp-gpa': heroGpa,
                     'disp-physicals': physicals,
+                    'disp-physicals-imperial': formatImperialPhysicals(PROFILE_DATA.heightCm, PROFILE_DATA.weightKg),
                     'disp-foot': PROFILE_DATA.preferredFoot === 'Right-footed' ? 'Right foot' : PROFILE_DATA.preferredFoot,
                     'disp-positions': PROFILE_DATA.primaryPosition,
                     'disp-secondary-positions': 'Secondary: ' + (PROFILE_DATA.secondaryPositions || 'Update Pending'),
@@ -713,7 +721,7 @@
                     link.addEventListener('click', () => {
                         window.setTimeout(() => {
                             const select = getElement('inquiry-type');
-                            if (select) select.value = 'Full Match Film Request';
+                            if (select) select.value = 'Match Footage Request';
                         }, 0);
                     });
                 });
@@ -859,3 +867,4 @@
     </script>
 </body>
 </html>
+
